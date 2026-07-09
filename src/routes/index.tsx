@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Flame, Hammer, Cog, ShieldCheck, Award, Clock, Phone, Mail, MapPin, Quote, Check } from "lucide-react";
+import logoAsset from "@/assets/brihaspati-logo.jpg.asset.json";
 import heroImg from "@/assets/hero-foundry.jpg";
 import ingotsImg from "@/assets/about-ingots.jpg";
 import castingImg from "@/assets/service-casting.jpg";
@@ -30,9 +31,13 @@ function Nav() {
     <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <a href="#top" className="flex items-center gap-2">
-          <div className="grid h-8 w-8 place-items-center rounded-sm bg-copper text-primary-foreground">
-            <Flame className="h-4 w-4" strokeWidth={2.5} />
-          </div>
+          <img
+            src={logoAsset.url}
+            alt="Brihaspati Alloys"
+            width={48}
+            height={56}
+            className="h-10 w-auto rounded-sm object-contain"
+          />
           <span className="font-display text-lg font-medium tracking-tight">Brihaspati<span className="text-copper">.</span></span>
         </a>
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
@@ -400,9 +405,13 @@ function Footer() {
     <footer className="border-t border-border/60 bg-card/30">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 py-10 sm:flex-row">
         <div className="flex items-center gap-2">
-          <div className="grid h-7 w-7 place-items-center rounded-sm bg-copper text-primary-foreground">
-            <Flame className="h-3.5 w-3.5" strokeWidth={2.5} />
-          </div>
+          <img
+            src={logoAsset.url}
+            alt="Brihaspati Alloys"
+            width={40}
+            height={48}
+            className="h-8 w-auto rounded-sm object-contain"
+          />
           <span className="font-display text-base">Brihaspati Alloys</span>
         </div>
         <p className="text-xs text-muted-foreground">
