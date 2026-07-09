@@ -33,7 +33,7 @@ function Nav() {
           <div className="grid h-8 w-8 place-items-center rounded-sm bg-copper text-primary-foreground">
             <Flame className="h-4 w-4" strokeWidth={2.5} />
           </div>
-          <span className="font-display text-lg font-medium tracking-tight">Vulcan<span className="text-copper">.</span></span>
+          <span className="font-display text-lg font-medium tracking-tight">Brihaspati<span className="text-copper">.</span></span>
         </a>
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
           <a href="#services" className="transition-colors hover:text-foreground">Services</a>
@@ -59,7 +59,7 @@ function Hero() {
       <div className="absolute inset-0 -z-10">
         <img
           src={heroImg}
-          alt="Molten non-ferrous metal being poured in Vulcan Foundry"
+          alt="Molten non-ferrous metal being poured at Brihaspati Alloys"
           width={1920}
           height={1280}
           className="h-full w-full object-cover opacity-60"
@@ -242,7 +242,7 @@ function About() {
             <div className="absolute -inset-4 -z-10 rounded-3xl bg-copper/10 blur-3xl" />
             <img
               src={ingotsImg}
-              alt="Stacked copper ingots ready for pouring at Vulcan Foundry"
+              alt="Stacked copper ingots ready for pouring at Brihaspati Alloys"
               loading="lazy"
               width={1200}
               height={1400}
@@ -290,12 +290,12 @@ function About() {
 function Testimonials() {
   const items = [
     {
-      quote: "Vulcan turned around a 40-part bronze prototype run in under a week. The finish came off the truck ready to fit — no rework, no drama.",
+      quote: "Brihaspati turned around a 40-part bronze prototype run in under a week. The finish came off the truck ready to fit — no rework, no drama.",
       name: "Elena Marsh",
       role: "Lead Engineer, Halcyon Marine",
     },
     {
-      quote: "We've used four foundries in twelve years. Vulcan is the only one that consistently hits our tolerance and our schedule. They're now our sole supplier.",
+      quote: "We've used four foundries in twelve years. Brihaspati is the only one that consistently hits our tolerance and our schedule. They're now our sole supplier.",
       name: "David Okafor",
       role: "Procurement Director, Wren & Sons",
     },
@@ -403,10 +403,10 @@ function Footer() {
           <div className="grid h-7 w-7 place-items-center rounded-sm bg-copper text-primary-foreground">
             <Flame className="h-3.5 w-3.5" strokeWidth={2.5} />
           </div>
-          <span className="font-display text-base">Vulcan Foundry</span>
+          <span className="font-display text-base">Brihaspati Alloys</span>
         </div>
         <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Vulcan Foundry Ltd. Pouring non-ferrous since 1978.
+          © {new Date().getFullYear()} Brihaspati Alloys Ltd. Pouring non-ferrous since 1978.
         </p>
       </div>
     </footer>

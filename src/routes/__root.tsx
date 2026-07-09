@@ -77,10 +77,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Vulcan Foundry — Premium Non-Ferrous Metal Casting" },
+      { title: "Brihaspati Alloys — Premium Non-Ferrous Metal Casting" },
       { name: "description", content: "Precision brass, bronze, copper and aluminium castings for engineers, architects and manufacturers. Small-batch quality, industrial-scale reliability." },
-      { name: "author", content: "Vulcan Foundry" },
-      { property: "og:title", content: "Vulcan Foundry — Premium Non-Ferrous Metal Casting" },
+      { name: "author", content: "Brihaspati Alloys" },
+      { property: "og:title", content: "Brihaspati Alloys — Premium Non-Ferrous Metal Casting" },
       { property: "og:description", content: "Precision brass, bronze, copper and aluminium castings. Small-batch quality, industrial-scale reliability." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
