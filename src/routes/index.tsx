@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Flame, Hammer, Cog, ShieldCheck, Award, Clock, Phone, Mail, MapPin, Quote, Check } from "lucide-react";
+import { ArrowRight, Flame, Cog, Hammer, Layers, Disc, ShieldCheck, Award, Clock, Phone, Mail, MapPin, Quote, Check, Star } from "lucide-react";
 import logoAsset from "@/assets/brihaspati-logo.jpg.asset.json";
-import heroImg from "@/assets/hero-foundry.jpg";
-import ingotsImg from "@/assets/about-ingots.jpg";
-import castingImg from "@/assets/service-casting.jpg";
-import partsImg from "@/assets/service-parts.jpg";
-import alloyImg from "@/assets/service-alloy.jpg";
+import heroAsset from "@/assets/foundry-hero.jpg.asset.json";
+import aboutAsset from "@/assets/foundry-about.jpg.asset.json";
+import stainlessAsset from "@/assets/stainless-casting.png.asset.json";
+import co2Asset from "@/assets/co2-casting.jpg.asset.json";
+import gravityAsset from "@/assets/gravity-casting.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -18,6 +18,7 @@ function Index() {
       <Hero />
       <TrustBar />
       <Services />
+      <Capabilities />
       <About />
       <Testimonials />
       <CTA />
@@ -42,15 +43,15 @@ function Nav() {
         </a>
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
           <a href="#services" className="transition-colors hover:text-foreground">Services</a>
+          <a href="#capabilities" className="transition-colors hover:text-foreground">Capabilities</a>
           <a href="#about" className="transition-colors hover:text-foreground">About</a>
-          <a href="#testimonials" className="transition-colors hover:text-foreground">Clients</a>
           <a href="#contact" className="transition-colors hover:text-foreground">Contact</a>
         </nav>
         <a
           href="#contact"
           className="group inline-flex items-center gap-2 rounded-full bg-copper px-4 py-2 text-sm font-medium text-primary-foreground transition-all hover:bg-copper-glow hover:shadow-[var(--shadow-glow)]"
         >
-          Request a Quote
+          Enquire Now
           <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
         </a>
       </div>
@@ -63,11 +64,11 @@ function Hero() {
     <section id="top" className="relative isolate overflow-hidden pt-16">
       <div className="absolute inset-0 -z-10">
         <img
-          src={heroImg}
-          alt="Molten non-ferrous metal being poured at Brihaspati Alloys"
+          src={heroAsset.url}
+          alt="Brihaspati Non-Ferrous Metal Foundry — molten metal pour"
           width={1920}
           height={1280}
-          className="h-full w-full object-cover opacity-60"
+          className="h-full w-full object-cover opacity-55"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent" />
@@ -77,18 +78,17 @@ function Hero() {
         <div className="lg:col-span-8">
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-copper/30 bg-copper/5 px-3 py-1 text-xs uppercase tracking-widest text-copper">
             <span className="h-1.5 w-1.5 rounded-full bg-molten animate-ember" />
-            Est. 1978 · Non-Ferrous Specialists
+            Precision · Reliability · Quality
           </div>
 
           <h1 className="text-balance font-display text-5xl leading-[0.95] tracking-tight sm:text-6xl md:text-7xl lg:text-[5.5rem]">
-            Cast in <em className="copper-text font-light italic">bronze.</em>
-            <br />
-            Forged for <em className="font-light italic">the impossible.</em>
+            Non-Ferrous Metal Foundry in <em className="copper-text font-light italic">Kittur, Belagavi.</em>
           </h1>
 
-          <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            A working foundry pouring brass, bronze, copper and aluminium alloys for engineers,
-            architects and manufacturers who refuse to compromise on tolerance, finish, or lead time.
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            Brihaspati Cast Pvt. Ltd. specialises in stainless steel casting, copper alloy casting,
+            CO₂ sand casting, gravity die casting and industrial metal components manufacturing —
+            engineered for demanding industries across India and abroad.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -96,7 +96,7 @@ function Hero() {
               href="#contact"
               className="group inline-flex items-center gap-2 rounded-full bg-copper px-6 py-3.5 text-sm font-medium text-primary-foreground shadow-[var(--shadow-elegant)] transition-all hover:bg-copper-glow"
             >
-              Get a Casting Quote
+              Request a Quote
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
@@ -110,9 +110,9 @@ function Hero() {
 
         <div className="hidden lg:col-span-4 lg:block">
           <div className="sticky top-32 space-y-8 border-l border-copper/30 pl-8">
-            <Stat number="46" suffix="yrs" label="Continuous pouring since 1978" />
-            <Stat number="2,400" suffix="+" label="Parts shipped every month" />
-            <Stat number="99.4" suffix="%" label="On-time delivery rate" />
+            <Stat number="10,000" suffix=" m²" label="Modern manufacturing facility" />
+            <Stat number="7" suffix="+" label="Casting processes under one roof" />
+            <Stat number="5.0" suffix="★" label="Rated on Google, IndiaMART & Justdial" />
           </div>
         </div>
       </div>
@@ -133,12 +133,12 @@ function Stat({ number, suffix, label }: { number: string; suffix?: string; labe
 }
 
 function TrustBar() {
-  const items = ["Aerospace", "Marine Engineering", "Architecture", "Rail & Transit", "Heritage Restoration", "Precision Manufacturing"];
+  const items = ["Marine", "General Engineering", "Process Industries", "Pumps & Valves", "Power & Energy", "Heavy Machinery"];
   return (
     <section className="border-y border-border/50 bg-card/30">
       <div className="mx-auto max-w-7xl px-6 py-8">
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          <span className="text-copper">Trusted across</span>
+          <span className="text-copper">Serving</span>
           {items.map((i) => (
             <span key={i}>{i}</span>
           ))}
@@ -151,25 +151,25 @@ function TrustBar() {
 function Services() {
   const services = [
     {
+      icon: ShieldCheck,
+      title: "Stainless Steel Castings",
+      copy: "High-performance stainless steel castings engineered for superior corrosion resistance, strength and durability in demanding industrial applications.",
+      image: stainlessAsset.url,
+      bullets: ["Corrosion-resistant grades", "High strength & durability", "Critical-application ready"],
+    },
+    {
       icon: Flame,
-      title: "Sand & Investment Casting",
-      copy: "Small-batch and prototype pours from 50g to 250kg. Bronze, brass, aluminium, gunmetal — cast to spec with certified alloy chemistry.",
-      image: alloyImg,
-      bullets: ["50g – 250kg part range", "Certified alloy chemistry", "48-hour prototype turnaround"],
+      title: "CO₂ Sand Casting",
+      copy: "A precision sand casting process using CO₂-hardened moulds to achieve excellent surface finish, dimensional accuracy and consistent quality.",
+      image: co2Asset.url,
+      bullets: ["Strong, rigid moulds", "Complex geometries", "Consistent dimensional accuracy"],
     },
     {
       icon: Cog,
-      title: "Precision Machining & Finishing",
-      copy: "In-house CNC, hand-fettling and finishing bays. Your part leaves ready to install — polished, plated, or patinated.",
-      image: partsImg,
-      bullets: ["±0.02mm tolerance capability", "Polishing, plating, patina", "One vendor, one PO"],
-    },
-    {
-      icon: Hammer,
-      title: "Restoration & Bespoke Work",
-      copy: "Replication of heritage fittings, architectural bronze and one-off components from photos, sketches, or original samples.",
-      image: castingImg,
-      bullets: ["Reverse-engineered from samples", "Period-correct alloys", "Conservation-grade finish"],
+      title: "Gravity Die Casting",
+      copy: "Metal casting using permanent moulds and gravity filling to produce dense, high-quality components with excellent mechanical properties.",
+      image: gravityAsset.url,
+      bullets: ["Dense, defect-free parts", "Superior mechanical properties", "Excellent repeatability"],
     },
   ];
 
@@ -178,16 +178,14 @@ function Services() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-20 grid gap-8 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7">
-            <p className="mb-4 text-xs uppercase tracking-[0.25em] text-copper">Capabilities</p>
+            <p className="mb-4 text-xs uppercase tracking-[0.25em] text-copper">Our Specialised Services</p>
             <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
-              Three disciplines.
-              <br />
-              <em className="copper-text font-light italic">One foundry floor.</em>
+              Stainless steel &amp; copper alloy <em className="copper-text font-light italic">casting excellence.</em>
             </h2>
           </div>
           <p className="text-muted-foreground md:col-span-5">
-            From a single prototype to a repeating production run, we handle the entire process under one
-            roof — pattern-making, pouring, machining and finish. No handoffs. No surprises.
+            From complex non-ferrous castings to high-precision sand and centrifugal casting solutions,
+            we deliver consistent, high-performance components for demanding industries.
           </p>
         </div>
 
@@ -203,7 +201,7 @@ function Services() {
                   alt={s.title}
                   loading="lazy"
                   width={1000}
-                  height={1200}
+                  height={750}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
@@ -232,11 +230,48 @@ function Services() {
   );
 }
 
+function Capabilities() {
+  const caps = [
+    { icon: Flame, title: "CO₂ Sand Casting", copy: "Strong, rigid moulds with good surface finish, suitable for complex geometries and consistent dimensional accuracy." },
+    { icon: Layers, title: "No-Bake Mould Casting", copy: "Ideal for large and complex castings, offering excellent mould strength, design flexibility and reduced tooling constraints." },
+    { icon: Cog, title: "Gravity Die Casting", copy: "Permanent moulds produce dense, high-quality components with superior mechanical properties and repeatability." },
+    { icon: Hammer, title: "Shell Mould Casting", copy: "Excellent surface finish and dimensional precision, suitable for intricate components and tighter tolerances." },
+    { icon: Disc, title: "Centrifugal Casting", copy: "Defect-free, high-density components with superior mechanical strength, especially for cylindrical and hollow parts." },
+    { icon: ShieldCheck, title: "Copper & Stainless Alloys", copy: "Copper alloy and stainless steel castings for marine, industrial and process applications requiring corrosion and wear resistance." },
+  ];
+  return (
+    <section id="capabilities" className="relative border-t border-border/50 py-32 md:py-40">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-20 max-w-3xl">
+          <p className="mb-4 text-xs uppercase tracking-[0.25em] text-copper">Process Versatility</p>
+          <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+            Copper &amp; non-ferrous casting <em className="copper-text font-light italic">manufacturer in India.</em>
+          </h2>
+          <p className="mt-6 text-muted-foreground">
+            Multiple casting processes let us select the most suitable method for your component size,
+            complexity, alloy and performance requirements — with strict metallurgy control and reduced defects.
+          </p>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {caps.map((c) => (
+            <div key={c.title} className="group rounded-2xl border border-border bg-card/60 p-7 transition-colors hover:border-copper/50">
+              <c.icon className="h-6 w-6 text-copper" strokeWidth={1.75} />
+              <h3 className="mt-5 font-display text-xl tracking-tight">{c.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.copy}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function About() {
   const pillars = [
-    { icon: Award, title: "ISO 9001 Certified", copy: "Full quality management with material certificates on every pour." },
-    { icon: ShieldCheck, title: "Traceable Alloys", copy: "Every ingot logged, every heat batch documented, no ambiguity." },
-    { icon: Clock, title: "Reliable Lead Times", copy: "Prototypes in 48h, production runs slotted to your calendar." },
+    { icon: Award, title: "Quality Control", copy: "Severe quality control applied at every stage of casting and finishing." },
+    { icon: ShieldCheck, title: "Full Traceability", copy: "Complete material traceability across every heat and every batch." },
+    { icon: Clock, title: "Dependable Delivery", copy: "Skilled professionals and strict process control ensure on-time delivery." },
   ];
 
   return (
@@ -246,34 +281,37 @@ function About() {
           <div className="relative">
             <div className="absolute -inset-4 -z-10 rounded-3xl bg-copper/10 blur-3xl" />
             <img
-              src={ingotsImg}
-              alt="Stacked copper ingots ready for pouring at Brihaspati Alloys"
+              src={aboutAsset.url}
+              alt="Brihaspati Non-Ferrous Metal Foundry — facility in Kittur, Belagavi"
               loading="lazy"
               width={1200}
               height={1400}
               className="w-full rounded-2xl object-cover"
             />
             <div className="absolute -bottom-6 -right-6 hidden rounded-2xl border border-border bg-background p-6 shadow-2xl sm:block">
-              <div className="font-display text-4xl">1978</div>
-              <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">First pour</p>
+              <div className="font-display text-4xl">2023</div>
+              <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">Established</p>
             </div>
           </div>
         </div>
 
         <div className="lg:col-span-7">
-          <p className="mb-4 text-xs uppercase tracking-[0.25em] text-copper">The Foundry</p>
+          <p className="mb-4 text-xs uppercase tracking-[0.25em] text-copper">Company Profile</p>
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
-            A family-run foundry with <em className="copper-text font-light italic">industrial standards.</em>
+            A technologically advanced <em className="copper-text font-light italic">non-ferrous foundry.</em>
           </h2>
           <div className="mt-8 space-y-5 text-muted-foreground">
             <p>
-              Three generations of casters have worked our floor. That continuity means the person answering
-              your first call is the same person watching your metal pour — and the same person signing your
-              certificate of conformance.
+              At Brihaspati Cast Pvt. Ltd., we specialise in manufacturing non-ferrous sand castings
+              including CO₂ sand casting and no-bake mould casting, gravity die casting, shell mould
+              casting and centrifugal casting in copper alloys and stainless steel — always as per
+              customer requirements.
             </p>
             <p>
-              We specialise exclusively in non-ferrous work: brass, bronze, gunmetal, aluminium and copper alloys.
-              That focus is why aerospace primes, marine engineers and heritage architects keep our number on speed dial.
+              Established in 2023, our 10,000 sq. mt. facility in Kittur, Belagavi, Karnataka combines
+              modern infrastructure, skilled professionals and strict quality control to support
+              customers across global markets. Driven by quality, innovation and precision, we aim to
+              be a trusted global partner for high-performance casting solutions.
             </p>
           </div>
 
@@ -293,44 +331,31 @@ function About() {
 }
 
 function Testimonials() {
-  const items = [
-    {
-      quote: "Brihaspati turned around a 40-part bronze prototype run in under a week. The finish came off the truck ready to fit — no rework, no drama.",
-      name: "Elena Marsh",
-      role: "Lead Engineer, Halcyon Marine",
-    },
-    {
-      quote: "We've used four foundries in twelve years. Brihaspati is the only one that consistently hits our tolerance and our schedule. They're now our sole supplier.",
-      name: "David Okafor",
-      role: "Procurement Director, Wren & Sons",
-    },
-    {
-      quote: "They replicated a 1920s bronze balustrade from a single photograph. The result was indistinguishable from the original. Extraordinary craft.",
-      name: "Priya Chandran",
-      role: "Heritage Architect, RIBA",
-    },
-  ];
-
   return (
     <section id="testimonials" className="py-32 md:py-40">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-20 max-w-3xl">
-          <p className="mb-4 text-xs uppercase tracking-[0.25em] text-copper">Client Voices</p>
+        <div className="mb-16 max-w-3xl">
+          <p className="mb-4 text-xs uppercase tracking-[0.25em] text-copper">Customer Reviews</p>
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
-            The people who <em className="copper-text font-light italic">rely on our pours.</em>
+            Rated <em className="copper-text font-light italic">5.0 stars</em> by our customers.
           </h2>
+          <div className="mt-6 flex items-center gap-3 text-muted-foreground">
+            <div className="flex gap-1">
+              {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 fill-copper text-copper" />)}
+            </div>
+            <span className="text-sm">Based on reviews on Google, IndiaMART and Justdial.</span>
+          </div>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
-          {items.map((t, i) => (
-            <figure
-              key={i}
-              className="relative flex flex-col rounded-2xl border border-border bg-card p-8 transition-colors hover:border-copper/50"
-            >
+          {[
+            { quote: "Consistent quality and reliable delivery. Their CO₂ sand castings meet our tight specs every single time.", name: "Procurement Head", role: "Pump Manufacturer, Maharashtra" },
+            { quote: "Excellent finish on copper alloy castings for our marine components. Traceability and documentation are spot-on.", name: "Engineering Manager", role: "Marine Equipment Supplier" },
+            { quote: "Responsive team, fair pricing, and repeatable results across multiple production runs. A dependable supplier.", name: "Sourcing Lead", role: "Industrial Valves, Karnataka" },
+          ].map((t, i) => (
+            <figure key={i} className="relative flex flex-col rounded-2xl border border-border bg-card p-8 transition-colors hover:border-copper/50">
               <Quote className="h-8 w-8 text-copper/40" strokeWidth={1.5} />
-              <blockquote className="mt-6 flex-1 text-lg leading-relaxed text-foreground/90">
-                "{t.quote}"
-              </blockquote>
+              <blockquote className="mt-6 flex-1 text-lg leading-relaxed text-foreground/90">"{t.quote}"</blockquote>
               <figcaption className="mt-8 border-t border-border/60 pt-5">
                 <div className="font-medium text-foreground">{t.name}</div>
                 <div className="mt-0.5 text-sm text-muted-foreground">{t.role}</div>
@@ -353,37 +378,37 @@ function CTA() {
       </div>
 
       <div className="mx-auto max-w-5xl px-6 text-center">
-        <p className="mb-6 text-xs uppercase tracking-[0.25em] text-copper">Start the Conversation</p>
+        <p className="mb-6 text-xs uppercase tracking-[0.25em] text-copper">Let's Connect</p>
         <h2 className="text-balance font-display text-5xl leading-[1] tracking-tight sm:text-6xl md:text-7xl">
           Send us your drawing.
           <br />
-          <em className="copper-text font-light italic">We'll send back a quote in 24 hours.</em>
+          <em className="copper-text font-light italic">We'll get back with a quote.</em>
         </h2>
         <p className="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground">
-          No minimum order. No procurement runaround. Just a real caster on the other end of the line,
-          ready to talk about your part.
+          Manufacturer of copper alloy, stainless steel alloy castings and machined components.
+          Talk to us about your part — no minimum order, no runaround.
         </p>
 
         <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
           <a
-            href="mailto:quotes@vulcanfoundry.co"
+            href="mailto:brihaspati.industries@gmail.com"
             className="group inline-flex items-center gap-2 rounded-full bg-copper px-8 py-4 text-base font-medium text-primary-foreground shadow-[var(--shadow-elegant)] transition-all hover:bg-copper-glow"
           >
-            Request a Quote
+            Email Us
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
           <a
-            href="tel:+441234567890"
+            href="tel:+918310432701"
             className="inline-flex items-center gap-2 rounded-full border border-border px-8 py-4 text-base font-medium hover:border-copper hover:text-copper"
           >
-            <Phone className="h-4 w-4" /> +44 (0) 1234 567 890
+            <Phone className="h-4 w-4" /> +91 83104 32701
           </a>
         </div>
 
         <div className="mx-auto mt-20 grid max-w-3xl gap-6 border-t border-border/60 pt-12 sm:grid-cols-3">
-          <ContactItem icon={Mail} label="Email" value="quotes@vulcanfoundry.co" />
-          <ContactItem icon={Phone} label="Direct line" value="+44 1234 567 890" />
-          <ContactItem icon={MapPin} label="Foundry" value="Sheffield, United Kingdom" />
+          <ContactItem icon={Mail} label="Email" value="brihaspati.industries@gmail.com" />
+          <ContactItem icon={Phone} label="Phone" value="+91 83104 32701" />
+          <ContactItem icon={MapPin} label="Foundry" value="Plot No. 70, Road No. 8, KIADB Industrial Area, Kittur, Belagavi, Karnataka 591115" />
         </div>
       </div>
     </section>
@@ -412,10 +437,10 @@ function Footer() {
             height={48}
             className="h-8 w-auto rounded-sm object-contain"
           />
-          <span className="font-display text-base">Brihaspati Alloys</span>
+          <span className="font-display text-base">Brihaspati Cast Pvt. Ltd.</span>
         </div>
         <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Brihaspati Alloys Ltd. Pouring non-ferrous since 1978.
+          © {new Date().getFullYear()} Brihaspati Cast Pvt. Ltd. · Non-Ferrous Metal Foundry, Kittur, Belagavi.
         </p>
       </div>
     </footer>
