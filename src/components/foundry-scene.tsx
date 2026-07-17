@@ -37,7 +37,6 @@ const moltenFrag = /* glsl */ `
   varying vec2 vUv;
   uniform float uTime;
   void main() {
-    float t = uUv_y(vUv.y);
     vec3 hot = vec3(1.0, 0.95, 0.55);
     vec3 mid = vec3(1.0, 0.55, 0.15);
     vec3 cool = vec3(0.75, 0.15, 0.05);
@@ -49,7 +48,6 @@ const moltenFrag = /* glsl */ `
     col += (1.0 - edge) * vec3(0.3, 0.1, 0.0);
     gl_FragColor = vec4(col, 1.0);
   }
-  float uUv_y(float y) { return y; }
 `;
 
 function MoltenStream() {
