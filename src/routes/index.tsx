@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { lazy, Suspense } from "react";
 import { ArrowRight, Flame, Cog, Hammer, Layers, Disc, ShieldCheck, Award, Clock, Phone, Mail, MapPin, Quote, Check, Star } from "lucide-react";
 import logoAsset from "@/assets/brihaspati-logo.jpg.asset.json";
 import heroAsset from "@/assets/foundry-hero.jpg.asset.json";
@@ -6,6 +7,9 @@ import aboutAsset from "@/assets/foundry-about.jpg.asset.json";
 import stainlessAsset from "@/assets/stainless-casting.png.asset.json";
 import co2Asset from "@/assets/co2-casting.jpg.asset.json";
 import gravityAsset from "@/assets/gravity-casting.png.asset.json";
+import { ClientOnly } from "@/components/client-only";
+
+const FoundryScene = lazy(() => import("@/components/foundry-scene"));
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -13,7 +17,12 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="relative min-h-screen text-foreground">
+      <ClientOnly>
+        <Suspense fallback={null}>
+          <FoundryScene />
+        </Suspense>
+      </ClientOnly>
       <Nav />
       <Hero />
       <TrustBar />
@@ -62,16 +71,9 @@ function Nav() {
 function Hero() {
   return (
     <section id="top" className="relative isolate overflow-hidden pt-16">
-      <div className="absolute inset-0 -z-10">
-        <img
-          src={heroAsset.url}
-          alt="Brihaspati Non-Ferrous Metal Foundry — molten metal pour"
-          width={1920}
-          height={1280}
-          className="h-full w-full object-cover opacity-55"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent" />
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/20 to-transparent" />
       </div>
 
       <div className="mx-auto grid max-w-7xl gap-16 px-6 pt-24 pb-32 md:pt-40 md:pb-48 lg:grid-cols-12">
