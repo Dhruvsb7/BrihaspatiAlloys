@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { lazy, Suspense } from "react";
 import { ArrowRight, Flame, Cog, Hammer, Layers, Disc, ShieldCheck, Award, Clock, Phone, Mail, MapPin, Quote, Check, Star } from "lucide-react";
 import logoAsset from "@/assets/brihaspati-logo.jpg.asset.json";
 import heroAsset from "@/assets/foundry-hero.jpg.asset.json";
@@ -6,6 +7,9 @@ import aboutAsset from "@/assets/foundry-about.jpg.asset.json";
 import stainlessAsset from "@/assets/stainless-casting.png.asset.json";
 import co2Asset from "@/assets/co2-casting.jpg.asset.json";
 import gravityAsset from "@/assets/gravity-casting.png.asset.json";
+import { ClientOnly } from "@/components/client-only";
+
+const FoundryScene = lazy(() => import("@/components/foundry-scene"));
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -13,7 +17,12 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="relative min-h-screen bg-background text-foreground">
+      <ClientOnly>
+        <Suspense fallback={null}>
+          <FoundryScene />
+        </Suspense>
+      </ClientOnly>
       <Nav />
       <Hero />
       <TrustBar />
