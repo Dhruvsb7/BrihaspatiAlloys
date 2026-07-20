@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { lazy, Suspense } from "react";
 import { ArrowRight, Flame, Cog, Hammer, Layers, Disc, ShieldCheck, Award, Clock, Phone, Mail, MapPin, Quote, Check, Star } from "lucide-react";
 import logoAsset from "@/assets/brihaspati-logo.jpg.asset.json";
 import heroAsset from "@/assets/foundry-hero.jpg.asset.json";
@@ -7,9 +6,6 @@ import aboutAsset from "@/assets/foundry-about.jpg.asset.json";
 import stainlessAsset from "@/assets/stainless-casting.png.asset.json";
 import co2Asset from "@/assets/co2-casting.jpg.asset.json";
 import gravityAsset from "@/assets/gravity-casting.png.asset.json";
-import { ClientOnly } from "@/components/client-only";
-
-const FoundryScene = lazy(() => import("@/components/foundry-scene"));
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -17,18 +13,14 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="relative min-h-screen text-foreground">
-      <ClientOnly>
-        <Suspense fallback={null}>
-          <FoundryScene />
-        </Suspense>
-      </ClientOnly>
+    <div className="relative min-h-screen bg-background text-foreground">
       <Nav />
       <Hero />
       <TrustBar />
       <Services />
       <Capabilities />
       <About />
+      <WhyUs />
       <Testimonials />
       <CTA />
       <Footer />
@@ -71,9 +63,10 @@ function Nav() {
 function Hero() {
   return (
     <section id="top" className="relative isolate overflow-hidden pt-16">
-      <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/20 to-transparent" />
+      <div className="absolute inset-0 -z-10">
+        <img src={heroAsset.url} alt="Molten metal pour at Brihaspati Alloys foundry" className="h-full w-full object-cover opacity-40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
       </div>
 
       <div className="mx-auto grid max-w-7xl gap-16 px-6 pt-24 pb-32 md:pt-40 md:pb-48 lg:grid-cols-12">
@@ -327,6 +320,42 @@ function About() {
             ))}
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function WhyUs() {
+  const benefits = [
+    "Uncompromising quality control at every stage of casting and finishing.",
+    "Stable and repeatable casting processes with strict metallurgy control.",
+    "High-integrity castings with reduced defects and full traceability.",
+    "Optimised cost without compromising performance or lead time.",
+    "Skilled professionals backed by modern infrastructure in a 10,000 sq. mt. facility.",
+    "Complete freedom to select alloys — copper, bronze, brass, stainless steel and more.",
+  ];
+  return (
+    <section id="why-us" className="relative border-t border-border/50 py-32 md:py-40">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <p className="mb-4 text-xs uppercase tracking-[0.25em] text-copper">Benefits of Working with Us</p>
+          <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+            A rapidly growing <em className="copper-text font-light italic">high-integrity</em> casting partner.
+          </h2>
+          <p className="mt-6 text-muted-foreground">
+            Brihaspati Alloys focuses on delivering reliable, precision-engineered components that meet stringent
+            quality and performance requirements across global industries — from marine and pumps to process
+            industries and heavy machinery.
+          </p>
+        </div>
+        <ul className="grid gap-4 lg:col-span-7 sm:grid-cols-2">
+          {benefits.map((b) => (
+            <li key={b} className="flex items-start gap-3 rounded-xl border border-border bg-card/60 p-5">
+              <Check className="mt-0.5 h-5 w-5 shrink-0 text-copper" strokeWidth={2.25} />
+              <span className="text-sm leading-relaxed text-foreground/90">{b}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
