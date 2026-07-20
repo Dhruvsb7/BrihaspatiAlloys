@@ -325,6 +325,42 @@ function About() {
   );
 }
 
+function WhyUs() {
+  const benefits = [
+    "Uncompromising quality control at every stage of casting and finishing.",
+    "Stable and repeatable casting processes with strict metallurgy control.",
+    "High-integrity castings with reduced defects and full traceability.",
+    "Optimised cost without compromising performance or lead time.",
+    "Skilled professionals backed by modern infrastructure in a 10,000 sq. mt. facility.",
+    "Complete freedom to select alloys — copper, bronze, brass, stainless steel and more.",
+  ];
+  return (
+    <section id="why-us" className="relative border-t border-border/50 py-32 md:py-40">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <p className="mb-4 text-xs uppercase tracking-[0.25em] text-copper">Benefits of Working with Us</p>
+          <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+            A rapidly growing <em className="copper-text font-light italic">high-integrity</em> casting partner.
+          </h2>
+          <p className="mt-6 text-muted-foreground">
+            Brihaspati Alloys focuses on delivering reliable, precision-engineered components that meet stringent
+            quality and performance requirements across global industries — from marine and pumps to process
+            industries and heavy machinery.
+          </p>
+        </div>
+        <ul className="grid gap-4 lg:col-span-7 sm:grid-cols-2">
+          {benefits.map((b) => (
+            <li key={b} className="flex items-start gap-3 rounded-xl border border-border bg-card/60 p-5">
+              <Check className="mt-0.5 h-5 w-5 shrink-0 text-copper" strokeWidth={2.25} />
+              <span className="text-sm leading-relaxed text-foreground/90">{b}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
 function Testimonials() {
   return (
     <section id="testimonials" className="py-32 md:py-40">
