@@ -1,5 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Flame, Cog, Hammer, Layers, Disc, ShieldCheck, Award, Clock, Phone, Mail, MapPin, Quote, Check, Star } from "lucide-react";
+import {
+  ArrowRight, Flame, Cog, Hammer, Layers, Disc, ShieldCheck, Award, Clock,
+  Phone, Mail, MapPin, Quote, Check, Star, Beaker, Microscope, Ruler, FileCheck,
+  Zap, Package, Truck, Factory, Ship, Wind, Building2, Sparkles, Plus, Minus,
+  Waves, Gauge, Droplets, Wrench,
+} from "lucide-react";
+import { useState } from "react";
 import logoAsset from "@/assets/brihaspati-logo.jpg.asset.json";
 import heroAsset from "@/assets/foundry-hero.jpg.asset.json";
 import aboutAsset from "@/assets/foundry-about.jpg.asset.json";
@@ -14,25 +20,51 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="relative min-h-screen bg-background text-foreground">
+      <Announcement />
       <Nav />
       <Hero />
+      <Marquee />
       <TrustBar />
       <Services />
+      <Process />
       <Capabilities />
+      <Alloys />
+      <Quality />
+      <Specs />
       <About />
+      <Industries />
       <WhyUs />
+      <Certifications />
       <Testimonials />
+      <FAQ />
       <CTA />
       <Footer />
     </div>
   );
 }
 
+function Announcement() {
+  return (
+    <div className="relative z-[60] w-full border-b border-copper/20 bg-obsidian/60 backdrop-blur">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-2 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+        <div className="flex items-center gap-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-molten animate-ember" />
+          <span className="hidden sm:inline">Now booking Q1 2026 pours · Batches shipping pan-India &amp; export</span>
+          <span className="sm:hidden">Booking Q1 2026 · Pan-India &amp; export</span>
+        </div>
+        <a href="#contact" className="hidden items-center gap-1 text-copper transition-colors hover:text-copper-glow md:inline-flex">
+          Request drawing review <ArrowRight className="h-3 w-3" />
+        </a>
+      </div>
+    </div>
+  );
+}
+
 function Nav() {
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/70 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <a href="#top" className="flex items-center gap-2">
+        <a href="#top" className="flex items-center gap-2.5">
           <img
             src={logoAsset.url}
             alt="Brihaspati Alloys"
@@ -40,11 +72,18 @@ function Nav() {
             height={56}
             className="h-10 w-auto rounded-sm object-contain"
           />
-          <span className="font-display text-lg font-medium tracking-tight">Brihaspati<span className="text-copper">.</span></span>
+          <div className="flex flex-col leading-none">
+            <span className="font-display text-lg font-medium tracking-tight">
+              Brihaspati<span className="text-copper">.</span>
+            </span>
+            <span className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">Non-Ferrous Foundry</span>
+          </div>
         </a>
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
           <a href="#services" className="transition-colors hover:text-foreground">Services</a>
-          <a href="#capabilities" className="transition-colors hover:text-foreground">Capabilities</a>
+          <a href="#process" className="transition-colors hover:text-foreground">Process</a>
+          <a href="#alloys" className="transition-colors hover:text-foreground">Alloys</a>
+          <a href="#quality" className="transition-colors hover:text-foreground">Quality</a>
           <a href="#about" className="transition-colors hover:text-foreground">About</a>
           <a href="#contact" className="transition-colors hover:text-foreground">Contact</a>
         </nav>
@@ -52,7 +91,7 @@ function Nav() {
           href="#contact"
           className="group inline-flex items-center gap-2 rounded-full bg-copper px-4 py-2 text-sm font-medium text-primary-foreground transition-all hover:bg-copper-glow hover:shadow-[var(--shadow-glow)]"
         >
-          Enquire Now
+          Enquire
           <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
         </a>
       </div>
@@ -62,14 +101,23 @@ function Nav() {
 
 function Hero() {
   return (
-    <section id="top" className="relative isolate overflow-hidden pt-16">
+    <section id="top" className="relative isolate overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <img src={heroAsset.url} alt="Molten metal pour at Brihaspati Alloys foundry" className="h-full w-full object-cover opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background" />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
+        <div
+          className="absolute inset-0 opacity-[0.08]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, oklch(0.68 0.14 45 / 0.5) 1px, transparent 1px), linear-gradient(to bottom, oklch(0.68 0.14 45 / 0.5) 1px, transparent 1px)",
+            backgroundSize: "80px 80px",
+            maskImage: "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+          }}
+        />
       </div>
 
-      <div className="mx-auto grid max-w-7xl gap-16 px-6 pt-24 pb-32 md:pt-40 md:pb-48 lg:grid-cols-12">
+      <div className="mx-auto grid max-w-7xl gap-16 px-6 pt-24 pb-32 md:pt-32 md:pb-40 lg:grid-cols-12">
         <div className="lg:col-span-8">
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-copper/30 bg-copper/5 px-3 py-1 text-xs uppercase tracking-widest text-copper">
             <span className="h-1.5 w-1.5 rounded-full bg-molten animate-ember" />
@@ -81,7 +129,7 @@ function Hero() {
           </h1>
 
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Brihaspati Cast Pvt. Ltd. specialises in stainless steel casting, copper alloy casting,
+            Brihaspati Alloys specialises in stainless steel casting, copper alloy casting,
             CO₂ sand casting, gravity die casting and industrial metal components manufacturing —
             engineered for demanding industries across India and abroad.
           </p>
@@ -101,6 +149,12 @@ function Hero() {
               Explore Capabilities
             </a>
           </div>
+
+          <div className="mt-14 grid max-w-2xl grid-cols-3 gap-4 border-t border-border/60 pt-8 text-xs uppercase tracking-widest text-muted-foreground">
+            <MicroStat k="ISO-aligned" v="Quality system" />
+            <MicroStat k="0.5 – 500 kg" v="Cast weight range" />
+            <MicroStat k="24 – 72 hr" v="Quote turnaround" />
+          </div>
         </div>
 
         <div className="hidden lg:col-span-4 lg:block">
@@ -108,10 +162,20 @@ function Hero() {
             <Stat number="10,000" suffix=" m²" label="Modern manufacturing facility" />
             <Stat number="7" suffix="+" label="Casting processes under one roof" />
             <Stat number="5.0" suffix="★" label="Rated on Google, IndiaMART & Justdial" />
+            <Stat number="20+" label="Alloy grades poured in-house" />
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function MicroStat({ k, v }: { k: string; v: string }) {
+  return (
+    <div>
+      <div className="text-copper">{k}</div>
+      <div className="mt-1 normal-case tracking-normal text-[13px] text-foreground/80">{v}</div>
+    </div>
   );
 }
 
@@ -127,10 +191,34 @@ function Stat({ number, suffix, label }: { number: string; suffix?: string; labe
   );
 }
 
+function Marquee() {
+  const alloys = [
+    "LTB · Leaded Tin Bronze", "PB1 · Phosphor Bronze", "PB2 · Phosphor Bronze",
+    "LG2 · Gunmetal", "HTB · High Tensile Brass", "Aluminium Bronze",
+    "Nickel Aluminium Bronze", "Manganese Bronze", "SS304 · CF8", "SS316 · CF8M",
+    "Cupro-Nickel 90/10", "Cupro-Nickel 70/30",
+  ];
+  return (
+    <div className="relative overflow-hidden border-y border-border/50 bg-obsidian/60 py-4">
+      <div className="flex animate-[marquee_45s_linear_infinite] gap-10 whitespace-nowrap text-xs uppercase tracking-[0.25em] text-muted-foreground">
+        {[...alloys, ...alloys].map((a, i) => (
+          <span key={i} className="flex items-center gap-10">
+            <span className="text-foreground/70">{a}</span>
+            <span className="text-copper/60">✦</span>
+          </span>
+        ))}
+      </div>
+      <style>{`@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent" />
+    </div>
+  );
+}
+
 function TrustBar() {
   const items = ["Marine", "General Engineering", "Process Industries", "Pumps & Valves", "Power & Energy", "Heavy Machinery"];
   return (
-    <section className="border-y border-border/50 bg-card/30">
+    <section className="border-b border-border/50 bg-card/30">
       <div className="mx-auto max-w-7xl px-6 py-8">
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-xs uppercase tracking-[0.2em] text-muted-foreground">
           <span className="text-copper">Serving</span>
@@ -140,6 +228,16 @@ function TrustBar() {
         </div>
       </div>
     </section>
+  );
+}
+
+function SectionLabel({ index, title }: { index: string; title: string }) {
+  return (
+    <div className="mb-4 flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-copper">
+      <span className="font-mono text-copper/60">{index}</span>
+      <span className="h-px w-8 bg-copper/40" />
+      <span>{title}</span>
+    </div>
   );
 }
 
@@ -173,7 +271,7 @@ function Services() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-20 grid gap-8 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7">
-            <p className="mb-4 text-xs uppercase tracking-[0.25em] text-copper">Our Specialised Services</p>
+            <SectionLabel index="01 / 07" title="Our Specialised Services" />
             <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
               Stainless steel &amp; copper alloy <em className="copper-text font-light italic">casting excellence.</em>
             </h2>
@@ -185,7 +283,7 @@ function Services() {
         </div>
 
         <div className="grid gap-8 md:grid-cols-3">
-          {services.map((s) => (
+          {services.map((s, idx) => (
             <article
               key={s.title}
               className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all hover:border-copper/60 hover:shadow-[var(--shadow-elegant)]"
@@ -202,6 +300,9 @@ function Services() {
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
                 <div className="absolute left-5 top-5 grid h-11 w-11 place-items-center rounded-lg bg-background/80 backdrop-blur-md">
                   <s.icon className="h-5 w-5 text-copper" strokeWidth={1.75} />
+                </div>
+                <div className="absolute right-5 top-5 rounded-full border border-border/60 bg-background/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground backdrop-blur-md">
+                  0{idx + 1}
                 </div>
               </div>
 
@@ -225,6 +326,51 @@ function Services() {
   );
 }
 
+function Process() {
+  const steps = [
+    { icon: FileCheck, t: "Enquiry & DFM", d: "Drawing review, alloy recommendation, tolerance study." },
+    { icon: Hammer, t: "Pattern & Tooling", d: "Wood, resin or metal patterns matched to volume and finish." },
+    { icon: Layers, t: "Mould Preparation", d: "CO₂ / no-bake / shell mould as the part demands." },
+    { icon: Flame, t: "Melting & Pour", d: "Charge control, temperature-logged pour, controlled cooling." },
+    { icon: Wrench, t: "Fettling & Machining", d: "Runner removal, heat treatment, dimensional machining." },
+    { icon: Microscope, t: "Inspection & NDT", d: "Spectro, DP, UT and dimensional sign-off on every batch." },
+    { icon: Package, t: "Packing & Dispatch", d: "VCI-wrapped, batch-tagged, full material traceability." },
+  ];
+
+  return (
+    <section id="process" className="relative border-t border-border/50 bg-card/20 py-32 md:py-40">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-16 max-w-3xl">
+          <SectionLabel index="02 / 07" title="From Drawing to Dispatch" />
+          <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+            A seven-stage <em className="copper-text font-light italic">manufacturing workflow.</em>
+          </h2>
+          <p className="mt-6 text-muted-foreground">
+            Every job passes through the same disciplined sequence — the reason first-time-right rates stay high
+            and rework stays low, no matter the alloy or geometry.
+          </p>
+        </div>
+
+        <ol className="relative grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <span className="absolute left-0 right-0 top-6 hidden h-px bg-gradient-to-r from-transparent via-copper/30 to-transparent lg:block" />
+          {steps.map((s, i) => (
+            <li key={s.t} className="relative rounded-2xl border border-border bg-background/60 p-6 transition-colors hover:border-copper/50">
+              <div className="flex items-center justify-between">
+                <div className="grid h-10 w-10 place-items-center rounded-lg border border-copper/30 bg-copper/10">
+                  <s.icon className="h-5 w-5 text-copper" strokeWidth={1.75} />
+                </div>
+                <span className="font-mono text-xs tracking-widest text-muted-foreground">STEP · 0{i + 1}</span>
+              </div>
+              <h3 className="mt-5 font-display text-lg tracking-tight">{s.t}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
 function Capabilities() {
   const caps = [
     { icon: Flame, title: "CO₂ Sand Casting", copy: "Strong, rigid moulds with good surface finish, suitable for complex geometries and consistent dimensional accuracy." },
@@ -238,7 +384,7 @@ function Capabilities() {
     <section id="capabilities" className="relative border-t border-border/50 py-32 md:py-40">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-20 max-w-3xl">
-          <p className="mb-4 text-xs uppercase tracking-[0.25em] text-copper">Process Versatility</p>
+          <SectionLabel index="03 / 07" title="Process Versatility" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             Copper &amp; non-ferrous casting <em className="copper-text font-light italic">manufacturer in India.</em>
           </h2>
@@ -256,6 +402,163 @@ function Capabilities() {
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.copy}</p>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Alloys() {
+  const groups = [
+    {
+      family: "Copper Alloys",
+      note: "Marine, pumps, valves, bearings",
+      items: [
+        { g: "LTB2 / LTB4", s: "IS 318 / BS 1400" },
+        { g: "LG2 · Gunmetal", s: "IS 318 / BS 1400" },
+        { g: "PB1 · Phosphor Bronze", s: "BS 1400 PB1" },
+        { g: "PB2 · Phosphor Bronze", s: "BS 1400 PB2" },
+        { g: "HTB1 · High Tensile Brass", s: "BS 1400 HTB1" },
+        { g: "Aluminium Bronze", s: "AB1 / AB2" },
+        { g: "Nickel Aluminium Bronze", s: "NAB · C95800" },
+        { g: "Manganese Bronze", s: "C86300" },
+        { g: "Cupro-Nickel", s: "90/10 · 70/30" },
+      ],
+    },
+    {
+      family: "Stainless Steel",
+      note: "Process, food, chemical, marine",
+      items: [
+        { g: "CF8 · SS304", s: "ASTM A351" },
+        { g: "CF8M · SS316", s: "ASTM A351" },
+        { g: "CF3 · SS304L", s: "ASTM A351" },
+        { g: "CF3M · SS316L", s: "ASTM A351" },
+        { g: "CA15 · SS410", s: "ASTM A217" },
+        { g: "Duplex CD4MCu", s: "ASTM A890" },
+      ],
+    },
+  ];
+
+  return (
+    <section id="alloys" className="relative border-t border-border/50 py-32 md:py-40">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-16 max-w-3xl">
+          <SectionLabel index="04 / 07" title="Alloy Portfolio" />
+          <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+            Twenty-plus grades <em className="copper-text font-light italic">poured in-house.</em>
+          </h2>
+          <p className="mt-6 text-muted-foreground">
+            Charge composition is planned per heat and verified on a bench-top spectrometer before pour.
+            Traceability documents follow every batch to dispatch.
+          </p>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-2">
+          {groups.map((grp) => (
+            <div key={grp.family} className="rounded-2xl border border-border bg-card/60 p-8">
+              <div className="flex items-baseline justify-between border-b border-border/60 pb-5">
+                <h3 className="font-display text-2xl tracking-tight">{grp.family}</h3>
+                <span className="text-xs uppercase tracking-widest text-muted-foreground">{grp.note}</span>
+              </div>
+              <ul className="mt-2 divide-y divide-border/40">
+                {grp.items.map((it) => (
+                  <li key={it.g} className="flex items-center justify-between py-3 text-sm">
+                    <span className="text-foreground">{it.g}</span>
+                    <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">{it.s}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-10 text-sm text-muted-foreground">
+          Working with a grade not listed? <a href="#contact" className="text-copper underline-offset-4 hover:underline">Send your spec</a> — bespoke chemistries are welcomed.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function Quality() {
+  const tests = [
+    { icon: Beaker, t: "Optical Emission Spectrometer", d: "Full chemistry check per heat before every pour." },
+    { icon: Gauge, t: "Universal Tensile Testing", d: "UTS, yield, elongation reported on request." },
+    { icon: Zap, t: "Brinell / Rockwell Hardness", d: "Sampled per batch to spec requirements." },
+    { icon: Waves, t: "Ultrasonic Testing (UT)", d: "Volumetric flaw detection on critical castings." },
+    { icon: Droplets, t: "Dye Penetrant (DP)", d: "Surface indication check on machined faces." },
+    { icon: Microscope, t: "Metallography", d: "Micro-structure verification for grain integrity." },
+  ];
+
+  return (
+    <section id="quality" className="relative border-t border-border/50 bg-card/20 py-32 md:py-40">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <SectionLabel index="05 / 07" title="Quality Assurance" />
+          <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+            Tested at every <em className="copper-text font-light italic">critical step.</em>
+          </h2>
+          <p className="mt-6 text-muted-foreground">
+            Our in-house lab keeps chemistry, mechanicals and NDT under one roof — reducing turnaround
+            and eliminating third-party dependencies for routine documentation.
+          </p>
+          <div className="mt-8 rounded-xl border border-copper/30 bg-copper/5 p-5 text-sm text-foreground/85">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-copper">
+              <Sparkles className="h-3.5 w-3.5" /> Documentation supplied
+            </div>
+            <p className="mt-2 leading-relaxed">
+              Material test certificate · Chemical analysis report · Dimensional inspection sheet ·
+              NDT report on request.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+          {tests.map((t) => (
+            <div key={t.t} className="rounded-xl border border-border bg-background/60 p-6">
+              <t.icon className="h-5 w-5 text-copper" strokeWidth={1.75} />
+              <h3 className="mt-4 font-display text-lg tracking-tight">{t.t}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Specs() {
+  const rows = [
+    { k: "Cast weight range", v: "0.5 kg — 500 kg / piece" },
+    { k: "Maximum envelope", v: "1500 × 1200 × 800 mm" },
+    { k: "General tolerance", v: "CT8 – CT10 (ISO 8062)" },
+    { k: "Machined tolerance", v: "±0.05 mm (post-machining)" },
+    { k: "Surface finish", v: "Ra 6.3 – 12.5 μm as-cast" },
+    { k: "Minimum wall", v: "4 mm (copper alloys) · 5 mm (SS)" },
+    { k: "Batch sizes", v: "Prototype (1) to serial (1000+ / month)" },
+    { k: "Lead time", v: "2 – 6 weeks depending on tooling" },
+  ];
+
+  return (
+    <section id="specs" className="relative border-t border-border/50 py-24 md:py-32">
+      <div className="mx-auto max-w-5xl px-6">
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <SectionLabel index="—" title="Technical Envelope" />
+            <h2 className="font-display text-3xl tracking-tight sm:text-4xl">Our casting capacity, at a glance.</h2>
+          </div>
+          <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Rev. 2026 · Sheet 01</span>
+        </div>
+
+        <div className="overflow-hidden rounded-2xl border border-border bg-card/60">
+          <dl className="divide-y divide-border/50">
+            {rows.map((r) => (
+              <div key={r.k} className="grid grid-cols-1 gap-1 px-6 py-4 sm:grid-cols-5 sm:items-center sm:gap-6">
+                <dt className="text-xs uppercase tracking-[0.22em] text-muted-foreground sm:col-span-2">{r.k}</dt>
+                <dd className="font-mono text-sm text-foreground sm:col-span-3">{r.v}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>
@@ -287,17 +590,22 @@ function About() {
               <div className="font-display text-4xl">2023</div>
               <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">Established</p>
             </div>
+            <div className="absolute -left-6 top-8 hidden rounded-2xl border border-border bg-background/95 p-5 shadow-2xl backdrop-blur sm:block">
+              <div className="text-xs uppercase tracking-widest text-copper">Located</div>
+              <div className="mt-1 font-display text-xl">Kittur · Belagavi</div>
+              <div className="mt-0.5 text-xs text-muted-foreground">KIADB Industrial Area</div>
+            </div>
           </div>
         </div>
 
         <div className="lg:col-span-7">
-          <p className="mb-4 text-xs uppercase tracking-[0.25em] text-copper">Company Profile</p>
+          <SectionLabel index="06 / 07" title="Company Profile" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             A technologically advanced <em className="copper-text font-light italic">non-ferrous foundry.</em>
           </h2>
           <div className="mt-8 space-y-5 text-muted-foreground">
             <p>
-              At Brihaspati Cast Pvt. Ltd., we specialise in manufacturing non-ferrous sand castings
+              At Brihaspati Alloys, we specialise in manufacturing non-ferrous sand castings
               including CO₂ sand casting and no-bake mould casting, gravity die casting, shell mould
               casting and centrifugal casting in copper alloys and stainless steel — always as per
               customer requirements.
@@ -325,6 +633,39 @@ function About() {
   );
 }
 
+function Industries() {
+  const inds = [
+    { icon: Ship, t: "Marine & Shipbuilding", d: "Propeller components, seawater pump parts, valve bodies in NAB and gunmetal." },
+    { icon: Droplets, t: "Pumps & Valves", d: "Impellers, casings, gland rings, seats — cast to hydraulic-tight tolerance." },
+    { icon: Factory, t: "Process & Chemical", d: "Corrosion-resistant SS316 / CF8M pump internals, agitator hubs, flanges." },
+    { icon: Wind, t: "Power & Energy", d: "Bearing housings, generator brush rings, cooling-loop hardware." },
+    { icon: Building2, t: "General Engineering", d: "Bushes, worm-wheels, thrust washers — batch production for OEMs." },
+    { icon: Truck, t: "Heavy Machinery", d: "Wear-plates, gear blanks, bronze bushings for earth-movers and mills." },
+  ];
+  return (
+    <section id="industries" className="relative py-32 md:py-40">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-16 max-w-3xl">
+          <SectionLabel index="—" title="Industries We Serve" />
+          <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+            Trusted where <em className="copper-text font-light italic">failure isn't an option.</em>
+          </h2>
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {inds.map((i) => (
+            <div key={i.t} className="group relative overflow-hidden rounded-2xl border border-border bg-card/60 p-7 transition-all hover:-translate-y-1 hover:border-copper/50">
+              <i.icon className="h-6 w-6 text-copper" strokeWidth={1.75} />
+              <h3 className="mt-5 font-display text-xl tracking-tight">{i.t}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{i.d}</p>
+              <div className="pointer-events-none absolute inset-x-0 -bottom-24 h-24 bg-gradient-to-t from-copper/20 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function WhyUs() {
   const benefits = [
     "Uncompromising quality control at every stage of casting and finishing.",
@@ -338,7 +679,7 @@ function WhyUs() {
     <section id="why-us" className="relative border-t border-border/50 py-32 md:py-40">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <p className="mb-4 text-xs uppercase tracking-[0.25em] text-copper">Benefits of Working with Us</p>
+          <SectionLabel index="07 / 07" title="Benefits of Working with Us" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             A rapidly growing <em className="copper-text font-light italic">high-integrity</em> casting partner.
           </h2>
@@ -361,12 +702,34 @@ function WhyUs() {
   );
 }
 
+function Certifications() {
+  const standards = ["ASTM", "BS 1400", "IS 318", "DIN 1705", "JIS H5120", "ISO 8062"];
+  return (
+    <section className="border-y border-border/50 bg-obsidian/60 py-14">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-copper">
+          <span>Castings supplied to international standards</span>
+          <span className="h-px flex-1 bg-copper/20" />
+        </div>
+        <div className="flex flex-wrap items-center justify-between gap-x-10 gap-y-6">
+          {standards.map((s) => (
+            <div key={s} className="flex items-center gap-3">
+              <Ruler className="h-5 w-5 text-copper/70" strokeWidth={1.5} />
+              <span className="font-display text-xl tracking-tight text-foreground/80">{s}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Testimonials() {
   return (
     <section id="testimonials" className="py-32 md:py-40">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 max-w-3xl">
-          <p className="mb-4 text-xs uppercase tracking-[0.25em] text-copper">Customer Reviews</p>
+          <SectionLabel index="—" title="Customer Reviews" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             Rated <em className="copper-text font-light italic">5.0 stars</em> by our customers.
           </h2>
@@ -394,6 +757,54 @@ function Testimonials() {
             </figure>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+function FAQ() {
+  const faqs = [
+    { q: "What is the minimum order quantity?", a: "There's no fixed MOQ. We happily take on single-piece prototypes as well as serial production of 1000+ per month." },
+    { q: "Can you match a bespoke chemistry?", a: "Yes — share the spec or reference standard and we'll adjust charge composition, verify on the spectrometer and pour to your exact grade." },
+    { q: "Do you supply machined castings?", a: "Yes. In-house turning, milling and drilling brings castings to final ±0.05 mm dimensions where required, along with heat treatment." },
+    { q: "What documentation is included?", a: "Standard packs include the Material Test Certificate, chemistry report and dimensional inspection sheet. NDT reports (UT / DP) supplied on request." },
+    { q: "Do you export?", a: "Yes — we regularly ship pan-India and to international customers. Packing is VCI-wrapped, palletised and batch-tagged for full traceability." },
+    { q: "What are typical lead times?", a: "Prototype: 2 – 3 weeks. Repeat production: 3 – 6 weeks depending on tooling, alloy availability and machining scope." },
+  ];
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <section id="faq" className="relative border-t border-border/50 bg-card/20 py-32 md:py-40">
+      <div className="mx-auto max-w-4xl px-6">
+        <div className="mb-14 text-center">
+          <SectionLabel index="—" title="Frequently Asked" />
+          <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl">
+            Answers before you <em className="copper-text font-light italic">pick up the phone.</em>
+          </h2>
+        </div>
+        <ul className="divide-y divide-border/60 rounded-2xl border border-border bg-background/60">
+          {faqs.map((f, i) => {
+            const isOpen = open === i;
+            return (
+              <li key={f.q}>
+                <button
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="flex w-full items-center justify-between gap-6 px-6 py-5 text-left transition-colors hover:bg-card/60"
+                >
+                  <div className="flex items-center gap-4">
+                    <span className="font-mono text-xs text-copper">0{i + 1}</span>
+                    <span className="font-display text-lg tracking-tight">{f.q}</span>
+                  </div>
+                  {isOpen ? <Minus className="h-4 w-4 text-copper" /> : <Plus className="h-4 w-4 text-copper" />}
+                </button>
+                {isOpen && (
+                  <div className="px-6 pb-6 pl-16 text-sm leading-relaxed text-muted-foreground">
+                    {f.a}
+                  </div>
+                )}
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </section>
   );
@@ -441,6 +852,12 @@ function CTA() {
           <ContactItem icon={Phone} label="Phone" value="+91 83104 32701" />
           <ContactItem icon={MapPin} label="Foundry" value="Plot No. 70, Road No. 8, KIADB Industrial Area, Kittur, Belagavi, Karnataka 591115" />
         </div>
+
+        <div className="mx-auto mt-10 flex max-w-3xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+          <span className="flex items-center gap-2"><Clock className="h-3.5 w-3.5 text-copper" /> Mon – Sat · 09:00 – 18:00 IST</span>
+          <span className="hidden h-3 w-px bg-border sm:inline" />
+          <span className="flex items-center gap-2"><MapPin className="h-3.5 w-3.5 text-copper" /> GSTIN available on request</span>
+        </div>
       </div>
     </section>
   );
@@ -459,20 +876,54 @@ function ContactItem({ icon: Icon, label, value }: { icon: typeof Mail; label: s
 function Footer() {
   return (
     <footer className="border-t border-border/60 bg-card/30">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 py-10 sm:flex-row">
-        <div className="flex items-center gap-2">
-          <img
-            src={logoAsset.url}
-            alt="Brihaspati Alloys"
-            width={40}
-            height={48}
-            className="h-8 w-auto rounded-sm object-contain"
-          />
-          <span className="font-display text-base">Brihaspati Cast Pvt. Ltd.</span>
+      <div className="mx-auto max-w-7xl px-6 py-14">
+        <div className="grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <div className="flex items-center gap-2">
+              <img
+                src={logoAsset.url}
+                alt="Brihaspati Alloys"
+                width={40}
+                height={48}
+                className="h-8 w-auto rounded-sm object-contain"
+              />
+              <span className="font-display text-base">Brihaspati Alloys</span>
+            </div>
+            <p className="mt-4 max-w-sm text-sm text-muted-foreground">
+              Non-ferrous metal foundry in Kittur, Belagavi. Copper alloy, stainless steel and
+              precision-machined castings for industries that don't tolerate compromise.
+            </p>
+          </div>
+
+          <div className="md:col-span-3">
+            <div className="text-xs uppercase tracking-widest text-copper">Explore</div>
+            <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <li><a href="#services" className="hover:text-foreground">Services</a></li>
+              <li><a href="#process" className="hover:text-foreground">Process</a></li>
+              <li><a href="#alloys" className="hover:text-foreground">Alloy portfolio</a></li>
+              <li><a href="#quality" className="hover:text-foreground">Quality assurance</a></li>
+              <li><a href="#faq" className="hover:text-foreground">FAQ</a></li>
+            </ul>
+          </div>
+
+          <div className="md:col-span-4">
+            <div className="text-xs uppercase tracking-widest text-copper">Reach us</div>
+            <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2"><Mail className="mt-0.5 h-4 w-4 text-copper" /> brihaspati.industries@gmail.com</li>
+              <li className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4 text-copper" /> +91 83104 32701</li>
+              <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 text-copper" /> KIADB Industrial Area, Kittur, Belagavi 591115</li>
+            </ul>
+          </div>
         </div>
-        <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Brihaspati Cast Pvt. Ltd. · Non-Ferrous Metal Foundry, Kittur, Belagavi.
-        </p>
+
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border/60 pt-6 sm:flex-row">
+          <p className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} Brihaspati Alloys · Non-Ferrous Metal Foundry, Kittur, Belagavi.
+          </p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+            Crafted in Karnataka · Poured with care
+          </p>
+        </div>
       </div>
     </footer>
   );
