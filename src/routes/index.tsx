@@ -63,9 +63,10 @@ function Nav() {
 function Hero() {
   return (
     <section id="top" className="relative isolate overflow-hidden pt-16">
-      <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/20 to-transparent" />
+      <div className="absolute inset-0 -z-10">
+        <img src={heroAsset.url} alt="Molten metal pour at Brihaspati Alloys foundry" className="h-full w-full object-cover opacity-40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
       </div>
 
       <div className="mx-auto grid max-w-7xl gap-16 px-6 pt-24 pb-32 md:pt-40 md:pb-48 lg:grid-cols-12">
