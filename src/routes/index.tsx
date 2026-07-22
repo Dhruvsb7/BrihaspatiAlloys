@@ -28,6 +28,7 @@ function Index() {
       <Services />
       <Process />
       <Capabilities />
+      <Products />
       <Alloys />
       <Quality />
       <Specs />
@@ -82,6 +83,7 @@ function Nav() {
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
           <a href="#services" className="transition-colors hover:text-foreground">Services</a>
           <a href="#process" className="transition-colors hover:text-foreground">Process</a>
+          <a href="#products" className="transition-colors hover:text-foreground">Products</a>
           <a href="#alloys" className="transition-colors hover:text-foreground">Alloys</a>
           <a href="#quality" className="transition-colors hover:text-foreground">Quality</a>
           <a href="#about" className="transition-colors hover:text-foreground">About</a>
@@ -194,8 +196,10 @@ function Stat({ number, suffix, label }: { number: string; suffix?: string; labe
 function Marquee() {
   const alloys = [
     "LTB · Leaded Tin Bronze", "PB1 · Phosphor Bronze", "PB2 · Phosphor Bronze",
-    "LG2 · Gunmetal", "HTB · High Tensile Brass", "Aluminium Bronze",
-    "Nickel Aluminium Bronze", "Manganese Bronze", "SS304 · CF8", "SS316 · CF8M",
+    "LG2 · Gunmetal", "HTB · High Tensile Brass", "Aluminium Bronze AB1/AB2",
+    "Nickel Aluminium Bronze", "Manganese Bronze", "Silicon Bronze",
+    "Monel 400", "Monel K-500", "Inconel 600", "Inconel 625", "Hastelloy C-276",
+    "SS304 · CF8", "SS316 · CF8M", "Duplex CD4MCu",
     "Cupro-Nickel 90/10", "Cupro-Nickel 70/30",
   ];
   return (
@@ -271,7 +275,7 @@ function Services() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-20 grid gap-8 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7">
-            <SectionLabel index="01 / 07" title="Our Specialised Services" />
+            <SectionLabel index="01 / 08" title="Our Specialised Services" />
             <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
               Stainless steel &amp; copper alloy <em className="copper-text font-light italic">casting excellence.</em>
             </h2>
@@ -341,7 +345,7 @@ function Process() {
     <section id="process" className="relative border-t border-border/50 bg-card/20 py-32 md:py-40">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 max-w-3xl">
-          <SectionLabel index="02 / 07" title="From Drawing to Dispatch" />
+          <SectionLabel index="02 / 08" title="From Drawing to Dispatch" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             A seven-stage <em className="copper-text font-light italic">manufacturing workflow.</em>
           </h2>
@@ -384,7 +388,7 @@ function Capabilities() {
     <section id="capabilities" className="relative border-t border-border/50 py-32 md:py-40">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-20 max-w-3xl">
-          <SectionLabel index="03 / 07" title="Process Versatility" />
+          <SectionLabel index="03 / 08" title="Process Versatility" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             Copper &amp; non-ferrous casting <em className="copper-text font-light italic">manufacturer in India.</em>
           </h2>
@@ -408,21 +412,125 @@ function Capabilities() {
   );
 }
 
+function Products() {
+  const products = [
+    {
+      icon: Wrench,
+      title: "Valve Casting",
+      copy: "Butterfly, gate, check and specialty high-pressure valve components — engineered for pressure, corrosion and long service life across critical industrial applications.",
+      tags: ["Butterfly", "Gate", "Check", "High-pressure"],
+    },
+    {
+      icon: Cog,
+      title: "General Engineering Casting",
+      copy: "Custom-engineered components for OEMs across pumps, gearboxes, hydraulics and mechanical assemblies — machined to drawing and delivered inspection-ready.",
+      tags: ["Impellers", "Housings", "Brackets", "Bushes"],
+    },
+    {
+      icon: Disc,
+      title: "Centrifugal Casting",
+      copy: "Copper alloy and stainless steel cylindrical parts with dense, defect-free structure — ideal for sleeves, bushes, liners and rotating components.",
+      tags: ["Sleeves", "Bushes", "Liners", "Rings"],
+    },
+    {
+      icon: Cog,
+      title: "Gravity Die Casting",
+      copy: "Permanent-mould copper alloy castings with excellent surface finish and dimensional accuracy, suited to medium-volume engineering parts.",
+      tags: ["Copper", "Bronze", "Brass"],
+    },
+    {
+      icon: Hammer,
+      title: "Shell Mould Casting",
+      copy: "Fine surface finish and tight tolerance components — copper alloy and stainless steel — for intricate geometries requiring repeatable quality.",
+      tags: ["Precision", "Intricate", "Repeatable"],
+    },
+    {
+      icon: Flame,
+      title: "CO₂ Mould Casting",
+      copy: "Rigid CO₂-cured sand moulds producing sound copper alloy and stainless steel castings for medium-to-large engineering components.",
+      tags: ["Medium", "Large", "Sound"],
+    },
+    {
+      icon: Layers,
+      title: "No-Bake Mould Casting",
+      copy: "Chemically bonded sand system for large, complex castings — excellent mould strength, dimensional stability and reduced tooling constraints.",
+      tags: ["Large", "Complex", "Flexible"],
+    },
+  ];
+
+  return (
+    <section id="products" className="relative border-t border-border/50 bg-card/20 py-32 md:py-40">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-16 max-w-3xl">
+          <SectionLabel index="04 / 08" title="Product Range" />
+          <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+            Precision castings <em className="copper-text font-light italic">engineered to spec.</em>
+          </h2>
+          <p className="mt-6 text-muted-foreground">
+            From valve bodies and impellers to centrifugally cast sleeves and large no-bake components —
+            we manufacture the full product range in copper, bronze, nickel and stainless steel alloys.
+          </p>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {products.map((p) => (
+            <div key={p.title} className="group flex flex-col rounded-2xl border border-border bg-background/60 p-7 transition-colors hover:border-copper/50">
+              <p.icon className="h-6 w-6 text-copper" strokeWidth={1.75} />
+              <h3 className="mt-5 font-display text-xl tracking-tight">{p.title}</h3>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{p.copy}</p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {p.tags.map((t) => (
+                  <span key={t} className="rounded-full border border-border/70 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-muted-foreground">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+
 function Alloys() {
   const groups = [
     {
       family: "Copper Alloys",
       note: "Marine, pumps, valves, bearings",
       items: [
-        { g: "LTB2 / LTB4", s: "IS 318 / BS 1400" },
+        { g: "LTB2 / LTB4 · Leaded Tin Bronze", s: "IS 318 / BS 1400" },
         { g: "LG2 · Gunmetal", s: "IS 318 / BS 1400" },
+        { g: "Cupro-Nickel 90/10", s: "C70600" },
+        { g: "Cupro-Nickel 70/30", s: "C71500" },
+        { g: "HTB1 · High Tensile Brass", s: "BS 1400 HTB1" },
+        { g: "HTB3 · High Tensile Brass", s: "BS 1400 HTB3" },
+      ],
+    },
+    {
+      family: "Bronze",
+      note: "Bearings, bushes, gears, marine fittings",
+      items: [
         { g: "PB1 · Phosphor Bronze", s: "BS 1400 PB1" },
         { g: "PB2 · Phosphor Bronze", s: "BS 1400 PB2" },
-        { g: "HTB1 · High Tensile Brass", s: "BS 1400 HTB1" },
-        { g: "Aluminium Bronze", s: "AB1 / AB2" },
-        { g: "Nickel Aluminium Bronze", s: "NAB · C95800" },
+        { g: "Aluminium Bronze · AB1", s: "BS 1400 AB1" },
+        { g: "Aluminium Bronze · AB2", s: "BS 1400 AB2" },
         { g: "Manganese Bronze", s: "C86300" },
-        { g: "Cupro-Nickel", s: "90/10 · 70/30" },
+        { g: "Silicon Bronze", s: "C87300" },
+      ],
+    },
+    {
+      family: "Nickel Alloys",
+      note: "Corrosion & high-temperature service",
+      items: [
+        { g: "Nickel Aluminium Bronze (NAB)", s: "C95800 / C95500" },
+        { g: "Monel 400", s: "UNS N04400" },
+        { g: "Monel K-500", s: "UNS N05500" },
+        { g: "Inconel 600", s: "UNS N06600" },
+        { g: "Inconel 625", s: "UNS N06625" },
+        { g: "Hastelloy C-276", s: "UNS N10276" },
       ],
     },
     {
@@ -443,7 +551,7 @@ function Alloys() {
     <section id="alloys" className="relative border-t border-border/50 py-32 md:py-40">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 max-w-3xl">
-          <SectionLabel index="04 / 07" title="Alloy Portfolio" />
+          <SectionLabel index="05 / 08" title="Alloy Portfolio" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             Twenty-plus grades <em className="copper-text font-light italic">poured in-house.</em>
           </h2>
@@ -453,7 +561,7 @@ function Alloys() {
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-2">
           {groups.map((grp) => (
             <div key={grp.family} className="rounded-2xl border border-border bg-card/60 p-8">
               <div className="flex items-baseline justify-between border-b border-border/60 pb-5">
@@ -494,7 +602,7 @@ function Quality() {
     <section id="quality" className="relative border-t border-border/50 bg-card/20 py-32 md:py-40">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <SectionLabel index="05 / 07" title="Quality Assurance" />
+          <SectionLabel index="06 / 08" title="Quality Assurance" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             Tested at every <em className="copper-text font-light italic">critical step.</em>
           </h2>
@@ -599,7 +707,7 @@ function About() {
         </div>
 
         <div className="lg:col-span-7">
-          <SectionLabel index="06 / 07" title="Company Profile" />
+          <SectionLabel index="07 / 08" title="Company Profile" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             A technologically advanced <em className="copper-text font-light italic">non-ferrous foundry.</em>
           </h2>
@@ -679,7 +787,7 @@ function WhyUs() {
     <section id="why-us" className="relative border-t border-border/50 py-32 md:py-40">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <SectionLabel index="07 / 07" title="Benefits of Working with Us" />
+          <SectionLabel index="08 / 08" title="Benefits of Working with Us" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             A rapidly growing <em className="copper-text font-light italic">high-integrity</em> casting partner.
           </h2>
