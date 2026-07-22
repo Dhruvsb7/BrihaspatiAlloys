@@ -414,15 +414,36 @@ function Alloys() {
       family: "Copper Alloys",
       note: "Marine, pumps, valves, bearings",
       items: [
-        { g: "LTB2 / LTB4", s: "IS 318 / BS 1400" },
+        { g: "LTB2 / LTB4 · Leaded Tin Bronze", s: "IS 318 / BS 1400" },
         { g: "LG2 · Gunmetal", s: "IS 318 / BS 1400" },
+        { g: "Cupro-Nickel 90/10", s: "C70600" },
+        { g: "Cupro-Nickel 70/30", s: "C71500" },
+        { g: "HTB1 · High Tensile Brass", s: "BS 1400 HTB1" },
+        { g: "HTB3 · High Tensile Brass", s: "BS 1400 HTB3" },
+      ],
+    },
+    {
+      family: "Bronze",
+      note: "Bearings, bushes, gears, marine fittings",
+      items: [
         { g: "PB1 · Phosphor Bronze", s: "BS 1400 PB1" },
         { g: "PB2 · Phosphor Bronze", s: "BS 1400 PB2" },
-        { g: "HTB1 · High Tensile Brass", s: "BS 1400 HTB1" },
-        { g: "Aluminium Bronze", s: "AB1 / AB2" },
-        { g: "Nickel Aluminium Bronze", s: "NAB · C95800" },
+        { g: "Aluminium Bronze · AB1", s: "BS 1400 AB1" },
+        { g: "Aluminium Bronze · AB2", s: "BS 1400 AB2" },
         { g: "Manganese Bronze", s: "C86300" },
-        { g: "Cupro-Nickel", s: "90/10 · 70/30" },
+        { g: "Silicon Bronze", s: "C87300" },
+      ],
+    },
+    {
+      family: "Nickel Alloys",
+      note: "Corrosion & high-temperature service",
+      items: [
+        { g: "Nickel Aluminium Bronze (NAB)", s: "C95800 / C95500" },
+        { g: "Monel 400", s: "UNS N04400" },
+        { g: "Monel K-500", s: "UNS N05500" },
+        { g: "Inconel 600", s: "UNS N06600" },
+        { g: "Inconel 625", s: "UNS N06625" },
+        { g: "Hastelloy C-276", s: "UNS N10276" },
       ],
     },
     {
@@ -453,7 +474,7 @@ function Alloys() {
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-2">
           {groups.map((grp) => (
             <div key={grp.family} className="rounded-2xl border border-border bg-card/60 p-8">
               <div className="flex items-baseline justify-between border-b border-border/60 pb-5">
