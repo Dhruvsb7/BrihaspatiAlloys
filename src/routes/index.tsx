@@ -412,6 +412,89 @@ function Capabilities() {
   );
 }
 
+function Products() {
+  const products = [
+    {
+      icon: Wrench,
+      title: "Valve Casting",
+      copy: "Butterfly, gate, check and specialty high-pressure valve components — engineered for pressure, corrosion and long service life across critical industrial applications.",
+      tags: ["Butterfly", "Gate", "Check", "High-pressure"],
+    },
+    {
+      icon: Cog,
+      title: "General Engineering Casting",
+      copy: "Custom-engineered components for OEMs across pumps, gearboxes, hydraulics and mechanical assemblies — machined to drawing and delivered inspection-ready.",
+      tags: ["Impellers", "Housings", "Brackets", "Bushes"],
+    },
+    {
+      icon: Disc,
+      title: "Centrifugal Casting",
+      copy: "Copper alloy and stainless steel cylindrical parts with dense, defect-free structure — ideal for sleeves, bushes, liners and rotating components.",
+      tags: ["Sleeves", "Bushes", "Liners", "Rings"],
+    },
+    {
+      icon: Cog,
+      title: "Gravity Die Casting",
+      copy: "Permanent-mould copper alloy castings with excellent surface finish and dimensional accuracy, suited to medium-volume engineering parts.",
+      tags: ["Copper", "Bronze", "Brass"],
+    },
+    {
+      icon: Hammer,
+      title: "Shell Mould Casting",
+      copy: "Fine surface finish and tight tolerance components — copper alloy and stainless steel — for intricate geometries requiring repeatable quality.",
+      tags: ["Precision", "Intricate", "Repeatable"],
+    },
+    {
+      icon: Flame,
+      title: "CO₂ Mould Casting",
+      copy: "Rigid CO₂-cured sand moulds producing sound copper alloy and stainless steel castings for medium-to-large engineering components.",
+      tags: ["Medium", "Large", "Sound"],
+    },
+    {
+      icon: Layers,
+      title: "No-Bake Mould Casting",
+      copy: "Chemically bonded sand system for large, complex castings — excellent mould strength, dimensional stability and reduced tooling constraints.",
+      tags: ["Large", "Complex", "Flexible"],
+    },
+  ];
+
+  return (
+    <section id="products" className="relative border-t border-border/50 bg-card/20 py-32 md:py-40">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-16 max-w-3xl">
+          <SectionLabel index="04 / 08" title="Product Range" />
+          <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+            Precision castings <em className="copper-text font-light italic">engineered to spec.</em>
+          </h2>
+          <p className="mt-6 text-muted-foreground">
+            From valve bodies and impellers to centrifugally cast sleeves and large no-bake components —
+            we manufacture the full product range in copper, bronze, nickel and stainless steel alloys.
+          </p>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {products.map((p) => (
+            <div key={p.title} className="group flex flex-col rounded-2xl border border-border bg-background/60 p-7 transition-colors hover:border-copper/50">
+              <p.icon className="h-6 w-6 text-copper" strokeWidth={1.75} />
+              <h3 className="mt-5 font-display text-xl tracking-tight">{p.title}</h3>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{p.copy}</p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {p.tags.map((t) => (
+                  <span key={t} className="rounded-full border border-border/70 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-muted-foreground">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+
 function Alloys() {
   const groups = [
     {
