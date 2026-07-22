@@ -275,7 +275,7 @@ function Services() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-20 grid gap-8 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7">
-            <SectionLabel index="01 / 07" title="Our Specialised Services" />
+            <SectionLabel index="01 / 08" title="Our Specialised Services" />
             <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
               Stainless steel &amp; copper alloy <em className="copper-text font-light italic">casting excellence.</em>
             </h2>
@@ -345,7 +345,7 @@ function Process() {
     <section id="process" className="relative border-t border-border/50 bg-card/20 py-32 md:py-40">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 max-w-3xl">
-          <SectionLabel index="02 / 07" title="From Drawing to Dispatch" />
+          <SectionLabel index="02 / 08" title="From Drawing to Dispatch" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             A seven-stage <em className="copper-text font-light italic">manufacturing workflow.</em>
           </h2>
@@ -388,7 +388,7 @@ function Capabilities() {
     <section id="capabilities" className="relative border-t border-border/50 py-32 md:py-40">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-20 max-w-3xl">
-          <SectionLabel index="03 / 07" title="Process Versatility" />
+          <SectionLabel index="03 / 08" title="Process Versatility" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             Copper &amp; non-ferrous casting <em className="copper-text font-light italic">manufacturer in India.</em>
           </h2>
@@ -551,7 +551,7 @@ function Alloys() {
     <section id="alloys" className="relative border-t border-border/50 py-32 md:py-40">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 max-w-3xl">
-          <SectionLabel index="04 / 07" title="Alloy Portfolio" />
+          <SectionLabel index="05 / 08" title="Alloy Portfolio" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             Twenty-plus grades <em className="copper-text font-light italic">poured in-house.</em>
           </h2>
@@ -602,7 +602,7 @@ function Quality() {
     <section id="quality" className="relative border-t border-border/50 bg-card/20 py-32 md:py-40">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <SectionLabel index="05 / 07" title="Quality Assurance" />
+          <SectionLabel index="06 / 08" title="Quality Assurance" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             Tested at every <em className="copper-text font-light italic">critical step.</em>
           </h2>
@@ -707,7 +707,7 @@ function About() {
         </div>
 
         <div className="lg:col-span-7">
-          <SectionLabel index="06 / 07" title="Company Profile" />
+          <SectionLabel index="07 / 08" title="Company Profile" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             A technologically advanced <em className="copper-text font-light italic">non-ferrous foundry.</em>
           </h2>
@@ -787,7 +787,7 @@ function WhyUs() {
     <section id="why-us" className="relative border-t border-border/50 py-32 md:py-40">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <SectionLabel index="07 / 07" title="Benefits of Working with Us" />
+          <SectionLabel index="08 / 08" title="Benefits of Working with Us" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             A rapidly growing <em className="copper-text font-light italic">high-integrity</em> casting partner.
           </h2>
