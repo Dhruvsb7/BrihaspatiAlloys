@@ -28,6 +28,7 @@ function Index() {
       <Services />
       <Process />
       <Capabilities />
+      <Products />
       <Alloys />
       <Quality />
       <Specs />
@@ -82,6 +83,7 @@ function Nav() {
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
           <a href="#services" className="transition-colors hover:text-foreground">Services</a>
           <a href="#process" className="transition-colors hover:text-foreground">Process</a>
+          <a href="#products" className="transition-colors hover:text-foreground">Products</a>
           <a href="#alloys" className="transition-colors hover:text-foreground">Alloys</a>
           <a href="#quality" className="transition-colors hover:text-foreground">Quality</a>
           <a href="#about" className="transition-colors hover:text-foreground">About</a>
@@ -194,8 +196,10 @@ function Stat({ number, suffix, label }: { number: string; suffix?: string; labe
 function Marquee() {
   const alloys = [
     "LTB · Leaded Tin Bronze", "PB1 · Phosphor Bronze", "PB2 · Phosphor Bronze",
-    "LG2 · Gunmetal", "HTB · High Tensile Brass", "Aluminium Bronze",
-    "Nickel Aluminium Bronze", "Manganese Bronze", "SS304 · CF8", "SS316 · CF8M",
+    "LG2 · Gunmetal", "HTB · High Tensile Brass", "Aluminium Bronze AB1/AB2",
+    "Nickel Aluminium Bronze", "Manganese Bronze", "Silicon Bronze",
+    "Monel 400", "Monel K-500", "Inconel 600", "Inconel 625", "Hastelloy C-276",
+    "SS304 · CF8", "SS316 · CF8M", "Duplex CD4MCu",
     "Cupro-Nickel 90/10", "Cupro-Nickel 70/30",
   ];
   return (
