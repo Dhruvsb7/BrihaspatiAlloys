@@ -12,4 +12,16 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Tell Nitro to prerender static HTML for GitHub Pages instead of targeting Cloudflare Workers
+  nitro: {
+    preset: "static",
+    prerender: {
+      routes: ["/"],
+      crawlLinks: true,
+    },
+  },
+  // Tell Vite where your subfolder is on GitHub Pages
+  vite: {
+    base: "/BrihaspatiAlloys/",
+  },
 });
