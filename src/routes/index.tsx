@@ -12,6 +12,13 @@ import aboutAsset from "@/assets/foundry-about.jpg.asset.json";
 import stainlessAsset from "@/assets/stainless-casting.png.asset.json";
 import co2Asset from "@/assets/co2-casting.jpg.asset.json";
 import gravityAsset from "@/assets/gravity-casting.png.asset.json";
+import valveImg from "@/assets/product-valve.jpg";
+import generalImg from "@/assets/product-general.jpg";
+import centrifugalImg from "@/assets/product-centrifugal.jpg";
+import textureImg from "@/assets/foundry-texture.jpg";
+import certMaterialImg from "@/assets/cert-material.jpg";
+import certQualityImg from "@/assets/cert-quality.jpg";
+import certInspectionImg from "@/assets/cert-inspection.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -20,6 +27,17 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="relative min-h-screen bg-background text-foreground">
+      {/* Ambient foundry backdrop */}
+      <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-[0.22]"
+          style={{ backgroundImage: `url(${textureImg})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/92 to-background" />
+        <div className="absolute -left-40 top-1/4 h-[38rem] w-[38rem] rounded-full bg-copper/10 blur-[140px]" />
+        <div className="absolute -right-40 top-2/3 h-[34rem] w-[34rem] rounded-full bg-molten/10 blur-[150px]" />
+      </div>
+
       <Announcement />
       <Nav />
       <Hero />
@@ -43,6 +61,7 @@ function Index() {
     </div>
   );
 }
+
 
 function Announcement() {
   return (
@@ -416,42 +435,49 @@ function Products() {
   const products = [
     {
       icon: Wrench,
+      img: valveImg,
       title: "Valve Casting",
       copy: "Butterfly, gate, check and specialty high-pressure valve components — engineered for pressure, corrosion and long service life across critical industrial applications.",
       tags: ["Butterfly", "Gate", "Check", "High-pressure"],
     },
     {
       icon: Cog,
+      img: generalImg,
       title: "General Engineering Casting",
       copy: "Custom-engineered components for OEMs across pumps, gearboxes, hydraulics and mechanical assemblies — machined to drawing and delivered inspection-ready.",
       tags: ["Impellers", "Housings", "Brackets", "Bushes"],
     },
     {
       icon: Disc,
+      img: centrifugalImg,
       title: "Centrifugal Casting",
       copy: "Copper alloy and stainless steel cylindrical parts with dense, defect-free structure — ideal for sleeves, bushes, liners and rotating components.",
       tags: ["Sleeves", "Bushes", "Liners", "Rings"],
     },
     {
       icon: Cog,
+      img: gravityAsset.url,
       title: "Gravity Die Casting",
       copy: "Permanent-mould copper alloy castings with excellent surface finish and dimensional accuracy, suited to medium-volume engineering parts.",
       tags: ["Copper", "Bronze", "Brass"],
     },
     {
       icon: Hammer,
+      img: stainlessAsset.url,
       title: "Shell Mould Casting",
       copy: "Fine surface finish and tight tolerance components — copper alloy and stainless steel — for intricate geometries requiring repeatable quality.",
       tags: ["Precision", "Intricate", "Repeatable"],
     },
     {
       icon: Flame,
+      img: co2Asset.url,
       title: "CO₂ Mould Casting",
       copy: "Rigid CO₂-cured sand moulds producing sound copper alloy and stainless steel castings for medium-to-large engineering components.",
       tags: ["Medium", "Large", "Sound"],
     },
     {
       icon: Layers,
+      img: heroAsset.url,
       title: "No-Bake Mould Casting",
       copy: "Chemically bonded sand system for large, complex castings — excellent mould strength, dimensional stability and reduced tooling constraints.",
       tags: ["Large", "Complex", "Flexible"],
@@ -459,8 +485,9 @@ function Products() {
   ];
 
   return (
-    <section id="products" className="relative border-t border-border/50 bg-card/20 py-32 md:py-40">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="products" className="relative overflow-hidden border-t border-border/50 bg-card/20 py-32 md:py-40">
+      <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-[70rem] -translate-x-1/2 rounded-full bg-copper/10 blur-[120px]" />
+      <div className="relative mx-auto max-w-7xl px-6">
         <div className="mb-16 max-w-3xl">
           <SectionLabel index="04 / 08" title="Product Range" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
@@ -474,16 +501,31 @@ function Products() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((p) => (
-            <div key={p.title} className="group flex flex-col rounded-2xl border border-border bg-background/60 p-7 transition-colors hover:border-copper/50">
-              <p.icon className="h-6 w-6 text-copper" strokeWidth={1.75} />
-              <h3 className="mt-5 font-display text-xl tracking-tight">{p.title}</h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{p.copy}</p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {p.tags.map((t) => (
-                  <span key={t} className="rounded-full border border-border/70 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-muted-foreground">
-                    {t}
-                  </span>
-                ))}
+            <div key={p.title} className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-background/60 transition-all hover:-translate-y-1 hover:border-copper/50">
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={p.img}
+                  alt={`${p.title} — Brihaspati Alloys non-ferrous castings`}
+                  loading="lazy"
+                  width={1200}
+                  height={900}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                <div className="absolute bottom-4 left-5 flex items-center gap-2">
+                  <p.icon className="h-5 w-5 text-copper" strokeWidth={1.75} />
+                  <h3 className="font-display text-xl tracking-tight">{p.title}</h3>
+                </div>
+              </div>
+              <div className="flex flex-1 flex-col p-7 pt-5">
+                <p className="flex-1 text-sm leading-relaxed text-muted-foreground">{p.copy}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {p.tags.map((t) => (
+                    <span key={t} className="rounded-full border border-border/70 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-muted-foreground">
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
@@ -492,6 +534,7 @@ function Products() {
     </section>
   );
 }
+
 
 
 
@@ -599,8 +642,10 @@ function Quality() {
   ];
 
   return (
-    <section id="quality" className="relative border-t border-border/50 bg-card/20 py-32 md:py-40">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
+    <section id="quality" className="relative overflow-hidden border-t border-border/50 bg-card/20 py-32 md:py-40">
+      <div className="pointer-events-none absolute -left-32 top-16 h-[28rem] w-[28rem] rounded-full bg-copper/12 blur-[130px]" />
+      <div className="pointer-events-none absolute right-1/4 bottom-0 h-72 w-72 rounded-full bg-molten/10 blur-[120px] animate-ember" />
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <SectionLabel index="06 / 08" title="Quality Assurance" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
@@ -682,7 +727,9 @@ function About() {
 
   return (
     <section id="about" className="relative overflow-hidden border-y border-border/50 bg-card/40 py-32 md:py-40">
-      <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-12 lg:gap-20">
+      <div className="pointer-events-none absolute -left-24 top-1/3 h-[32rem] w-[32rem] rounded-full bg-copper/12 blur-[140px]" />
+      <div className="pointer-events-none absolute right-0 bottom-0 h-[26rem] w-[26rem] rounded-full bg-molten/10 blur-[140px]" />
+      <div className="relative mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-12 lg:gap-20">
         <div className="lg:col-span-5">
           <div className="relative">
             <div className="absolute -inset-4 -z-10 rounded-3xl bg-copper/10 blur-3xl" />
@@ -784,8 +831,10 @@ function WhyUs() {
     "Complete freedom to select alloys — copper, bronze, brass, stainless steel and more.",
   ];
   return (
-    <section id="why-us" className="relative border-t border-border/50 py-32 md:py-40">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
+    <section id="why-us" className="relative overflow-hidden border-t border-border/50 py-32 md:py-40">
+      <div className="pointer-events-none absolute -right-32 top-1/2 h-[30rem] w-[30rem] -translate-y-1/2 rounded-full bg-molten/10 blur-[130px]" />
+      <div className="pointer-events-none absolute left-0 top-0 h-px w-full divider-hairline" />
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <SectionLabel index="08 / 08" title="Benefits of Working with Us" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
@@ -812,10 +861,48 @@ function WhyUs() {
 
 function Certifications() {
   const standards = ["ASTM", "BS 1400", "IS 318", "DIN 1705", "JIS H5120", "ISO 8062"];
+  const certs = [
+    { img: certQualityImg, t: "Quality Management System", d: "Documented QMS governing every heat, mould and inspection stage." },
+    { img: certMaterialImg, t: "Material Test Certificate", d: "Chemistry and mechanical properties issued per heat with every dispatch." },
+    { img: certInspectionImg, t: "Dimensional Inspection Report", d: "Measured against drawing tolerances and signed off before packing." },
+  ];
   return (
-    <section className="border-y border-border/50 bg-obsidian/60 py-14">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-copper">
+    <section id="certificates" className="relative overflow-hidden border-y border-border/50 bg-obsidian/60 py-24 md:py-32">
+      <div className="pointer-events-none absolute left-1/2 top-0 h-56 w-[60rem] -translate-x-1/2 rounded-full bg-copper/10 blur-[130px]" />
+      <div className="relative mx-auto max-w-7xl px-6">
+        <div className="mb-14 max-w-3xl">
+          <SectionLabel index="—" title="Certificates & Documentation" />
+          <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl">
+            Every casting ships with <em className="copper-text font-light italic">paperwork you can audit.</em>
+          </h2>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {certs.map((c) => (
+            <div key={c.t} className="group overflow-hidden rounded-2xl border border-border bg-card/60 transition-all hover:-translate-y-1 hover:border-copper/50">
+              <div className="relative aspect-[4/3] overflow-hidden bg-obsidian">
+                <img
+                  src={c.img}
+                  alt={`${c.t} — Brihaspati Alloys`}
+                  loading="lazy"
+                  width={1008}
+                  height={1008}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
+              </div>
+              <div className="p-6">
+                <div className="flex items-center gap-2 text-copper">
+                  <FileCheck className="h-4 w-4" strokeWidth={1.75} />
+                  <h3 className="font-display text-lg tracking-tight text-foreground">{c.t}</h3>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.d}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-16 mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-copper">
           <span>Castings supplied to international standards</span>
           <span className="h-px flex-1 bg-copper/20" />
         </div>
@@ -831,6 +918,7 @@ function Certifications() {
     </section>
   );
 }
+
 
 function Testimonials() {
   return (
