@@ -93,11 +93,12 @@ function Nav() {
             className="h-10 w-auto rounded-sm object-contain"
           />
           <div className="flex flex-col leading-none">
-            <span className="font-display text-lg font-medium tracking-tight">
-              Brihaspati<span className="text-copper">.</span>
+            <span className="gold-silver-text font-display text-lg font-semibold tracking-tight">
+              Brihaspati Alloys
             </span>
             <span className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">Non-Ferrous Foundry</span>
           </div>
+
         </a>
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
           <a href="#services" className="transition-colors hover:text-foreground">Services</a>
