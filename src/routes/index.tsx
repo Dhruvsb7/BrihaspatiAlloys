@@ -435,42 +435,49 @@ function Products() {
   const products = [
     {
       icon: Wrench,
+      img: valveImg,
       title: "Valve Casting",
       copy: "Butterfly, gate, check and specialty high-pressure valve components — engineered for pressure, corrosion and long service life across critical industrial applications.",
       tags: ["Butterfly", "Gate", "Check", "High-pressure"],
     },
     {
       icon: Cog,
+      img: generalImg,
       title: "General Engineering Casting",
       copy: "Custom-engineered components for OEMs across pumps, gearboxes, hydraulics and mechanical assemblies — machined to drawing and delivered inspection-ready.",
       tags: ["Impellers", "Housings", "Brackets", "Bushes"],
     },
     {
       icon: Disc,
+      img: centrifugalImg,
       title: "Centrifugal Casting",
       copy: "Copper alloy and stainless steel cylindrical parts with dense, defect-free structure — ideal for sleeves, bushes, liners and rotating components.",
       tags: ["Sleeves", "Bushes", "Liners", "Rings"],
     },
     {
       icon: Cog,
+      img: gravityAsset.url,
       title: "Gravity Die Casting",
       copy: "Permanent-mould copper alloy castings with excellent surface finish and dimensional accuracy, suited to medium-volume engineering parts.",
       tags: ["Copper", "Bronze", "Brass"],
     },
     {
       icon: Hammer,
+      img: stainlessAsset.url,
       title: "Shell Mould Casting",
       copy: "Fine surface finish and tight tolerance components — copper alloy and stainless steel — for intricate geometries requiring repeatable quality.",
       tags: ["Precision", "Intricate", "Repeatable"],
     },
     {
       icon: Flame,
+      img: co2Asset.url,
       title: "CO₂ Mould Casting",
       copy: "Rigid CO₂-cured sand moulds producing sound copper alloy and stainless steel castings for medium-to-large engineering components.",
       tags: ["Medium", "Large", "Sound"],
     },
     {
       icon: Layers,
+      img: heroAsset.url,
       title: "No-Bake Mould Casting",
       copy: "Chemically bonded sand system for large, complex castings — excellent mould strength, dimensional stability and reduced tooling constraints.",
       tags: ["Large", "Complex", "Flexible"],
@@ -478,8 +485,9 @@ function Products() {
   ];
 
   return (
-    <section id="products" className="relative border-t border-border/50 bg-card/20 py-32 md:py-40">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="products" className="relative overflow-hidden border-t border-border/50 bg-card/20 py-32 md:py-40">
+      <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-[70rem] -translate-x-1/2 rounded-full bg-copper/10 blur-[120px]" />
+      <div className="relative mx-auto max-w-7xl px-6">
         <div className="mb-16 max-w-3xl">
           <SectionLabel index="04 / 08" title="Product Range" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
@@ -493,16 +501,31 @@ function Products() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((p) => (
-            <div key={p.title} className="group flex flex-col rounded-2xl border border-border bg-background/60 p-7 transition-colors hover:border-copper/50">
-              <p.icon className="h-6 w-6 text-copper" strokeWidth={1.75} />
-              <h3 className="mt-5 font-display text-xl tracking-tight">{p.title}</h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{p.copy}</p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {p.tags.map((t) => (
-                  <span key={t} className="rounded-full border border-border/70 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-muted-foreground">
-                    {t}
-                  </span>
-                ))}
+            <div key={p.title} className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-background/60 transition-all hover:-translate-y-1 hover:border-copper/50">
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={p.img}
+                  alt={`${p.title} — Brihaspati Alloys non-ferrous castings`}
+                  loading="lazy"
+                  width={1200}
+                  height={900}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                <div className="absolute bottom-4 left-5 flex items-center gap-2">
+                  <p.icon className="h-5 w-5 text-copper" strokeWidth={1.75} />
+                  <h3 className="font-display text-xl tracking-tight">{p.title}</h3>
+                </div>
+              </div>
+              <div className="flex flex-1 flex-col p-7 pt-5">
+                <p className="flex-1 text-sm leading-relaxed text-muted-foreground">{p.copy}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {p.tags.map((t) => (
+                    <span key={t} className="rounded-full border border-border/70 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-muted-foreground">
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
@@ -511,6 +534,7 @@ function Products() {
     </section>
   );
 }
+
 
 
 
