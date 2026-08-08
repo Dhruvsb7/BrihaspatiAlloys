@@ -57,6 +57,8 @@ function Index() {
       <Testimonials />
       <FAQ />
       <CTA />
+      <LocationMap />
+
       <Footer />
     </div>
   );
@@ -93,11 +95,12 @@ function Nav() {
             className="h-10 w-auto rounded-sm object-contain"
           />
           <div className="flex flex-col leading-none">
-            <span className="font-display text-lg font-medium tracking-tight">
-              Brihaspati<span className="text-copper">.</span>
+            <span className="gold-silver-text font-display text-lg font-semibold tracking-tight">
+              Brihaspati Alloys
             </span>
             <span className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">Non-Ferrous Foundry</span>
           </div>
+
         </a>
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
           <a href="#services" className="transition-colors hover:text-foreground">Services</a>
@@ -106,6 +109,7 @@ function Nav() {
           <a href="#alloys" className="transition-colors hover:text-foreground">Alloys</a>
           <a href="#quality" className="transition-colors hover:text-foreground">Quality</a>
           <a href="#about" className="transition-colors hover:text-foreground">About</a>
+          <a href="#location" className="transition-colors hover:text-foreground">Location</a>
           <a href="#contact" className="transition-colors hover:text-foreground">Contact</a>
         </nav>
         <a
@@ -1069,6 +1073,80 @@ function ContactItem({ icon: Icon, label, value }: { icon: typeof Mail; label: s
   );
 }
 
+function LocationMap() {
+  const address =
+    "Brihaspati Non-Ferrous Metal Foundry, Plot No. 70, Road No. 8, KIADB Industrial Area, Kittur, Belagavi, Karnataka 591115";
+  const embedSrc = `https://www.google.com/maps?q=${encodeURIComponent(address)}&z=15&output=embed`;
+  const directions = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`;
+
+  return (
+    <section id="location" className="relative overflow-hidden border-t border-border/60 bg-obsidian/60 py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-4">
+            <p className="text-xs uppercase tracking-[0.25em] text-copper">Our Location</p>
+            <h2 className="mt-4 font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl">
+              Find the <em className="copper-text font-light italic">foundry.</em>
+            </h2>
+            <div className="mt-8 space-y-5 text-sm">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-copper">Foundry Address</p>
+                <p className="mt-1 leading-relaxed text-muted-foreground">
+                  Plot No. 70, Road No. 8, KIADB Industrial Area,
+                  <br />
+                  Kittur, Belagavi, Karnataka 591115, India
+                </p>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-widest text-copper">Phone</p>
+                <a href="tel:+918310432701" className="mt-1 block text-muted-foreground hover:text-foreground">
+                  +91 83104 32701
+                </a>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-widest text-copper">Email</p>
+                <a
+                  href="mailto:brihaspati.industries@gmail.com"
+                  className="mt-1 block break-all text-muted-foreground hover:text-foreground"
+                >
+                  brihaspati.industries@gmail.com
+                </a>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-widest text-copper">Hours</p>
+                <p className="mt-1 text-muted-foreground">Mon – Sat · 09:00 – 18:00 IST</p>
+              </div>
+            </div>
+            <a
+              href={directions}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-8 inline-flex items-center gap-2 rounded-full border border-copper/50 px-6 py-3 text-sm font-medium text-copper transition-colors hover:bg-copper hover:text-primary-foreground"
+            >
+              Get directions
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
+
+          <div className="lg:col-span-8">
+            <div className="overflow-hidden rounded-2xl border border-border/60 shadow-[var(--shadow-elegant)]">
+              <iframe
+                title="Brihaspati Alloys foundry location, KIADB Industrial Area, Kittur, Belagavi"
+                src={embedSrc}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-[380px] w-full border-0 md:h-[460px]"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
 function Footer() {
   return (
     <footer className="border-t border-border/60 bg-card/30">
@@ -1083,7 +1161,7 @@ function Footer() {
                 height={48}
                 className="h-8 w-auto rounded-sm object-contain"
               />
-              <span className="font-display text-base">Brihaspati Alloys</span>
+              <span className="gold-silver-text font-display text-base font-semibold">Brihaspati Alloys</span>
             </div>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
               Non-ferrous metal foundry in Kittur, Belagavi. Copper alloy, stainless steel and
@@ -1098,6 +1176,7 @@ function Footer() {
               <li><a href="#process" className="hover:text-foreground">Process</a></li>
               <li><a href="#alloys" className="hover:text-foreground">Alloy portfolio</a></li>
               <li><a href="#quality" className="hover:text-foreground">Quality assurance</a></li>
+              <li><a href="#location" className="hover:text-foreground">Location &amp; map</a></li>
               <li><a href="#faq" className="hover:text-foreground">FAQ</a></li>
             </ul>
           </div>
