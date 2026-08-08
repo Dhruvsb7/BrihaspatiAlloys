@@ -109,6 +109,7 @@ function Nav() {
           <a href="#alloys" className="transition-colors hover:text-foreground">Alloys</a>
           <a href="#quality" className="transition-colors hover:text-foreground">Quality</a>
           <a href="#about" className="transition-colors hover:text-foreground">About</a>
+          <a href="#location" className="transition-colors hover:text-foreground">Location</a>
           <a href="#contact" className="transition-colors hover:text-foreground">Contact</a>
         </nav>
         <a
@@ -1175,6 +1176,7 @@ function Footer() {
               <li><a href="#process" className="hover:text-foreground">Process</a></li>
               <li><a href="#alloys" className="hover:text-foreground">Alloy portfolio</a></li>
               <li><a href="#quality" className="hover:text-foreground">Quality assurance</a></li>
+              <li><a href="#location" className="hover:text-foreground">Location &amp; map</a></li>
               <li><a href="#faq" className="hover:text-foreground">FAQ</a></li>
             </ul>
           </div>
