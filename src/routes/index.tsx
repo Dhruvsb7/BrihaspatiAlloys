@@ -642,8 +642,10 @@ function Quality() {
   ];
 
   return (
-    <section id="quality" className="relative border-t border-border/50 bg-card/20 py-32 md:py-40">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
+    <section id="quality" className="relative overflow-hidden border-t border-border/50 bg-card/20 py-32 md:py-40">
+      <div className="pointer-events-none absolute -left-32 top-16 h-[28rem] w-[28rem] rounded-full bg-copper/12 blur-[130px]" />
+      <div className="pointer-events-none absolute right-1/4 bottom-0 h-72 w-72 rounded-full bg-molten/10 blur-[120px] animate-ember" />
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <SectionLabel index="06 / 08" title="Quality Assurance" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
@@ -725,7 +727,9 @@ function About() {
 
   return (
     <section id="about" className="relative overflow-hidden border-y border-border/50 bg-card/40 py-32 md:py-40">
-      <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-12 lg:gap-20">
+      <div className="pointer-events-none absolute -left-24 top-1/3 h-[32rem] w-[32rem] rounded-full bg-copper/12 blur-[140px]" />
+      <div className="pointer-events-none absolute right-0 bottom-0 h-[26rem] w-[26rem] rounded-full bg-molten/10 blur-[140px]" />
+      <div className="relative mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-12 lg:gap-20">
         <div className="lg:col-span-5">
           <div className="relative">
             <div className="absolute -inset-4 -z-10 rounded-3xl bg-copper/10 blur-3xl" />
@@ -827,8 +831,10 @@ function WhyUs() {
     "Complete freedom to select alloys — copper, bronze, brass, stainless steel and more.",
   ];
   return (
-    <section id="why-us" className="relative border-t border-border/50 py-32 md:py-40">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
+    <section id="why-us" className="relative overflow-hidden border-t border-border/50 py-32 md:py-40">
+      <div className="pointer-events-none absolute -right-32 top-1/2 h-[30rem] w-[30rem] -translate-y-1/2 rounded-full bg-molten/10 blur-[130px]" />
+      <div className="pointer-events-none absolute left-0 top-0 h-px w-full divider-hairline" />
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <SectionLabel index="08 / 08" title="Benefits of Working with Us" />
           <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
@@ -855,10 +861,48 @@ function WhyUs() {
 
 function Certifications() {
   const standards = ["ASTM", "BS 1400", "IS 318", "DIN 1705", "JIS H5120", "ISO 8062"];
+  const certs = [
+    { img: certQualityImg, t: "Quality Management System", d: "Documented QMS governing every heat, mould and inspection stage." },
+    { img: certMaterialImg, t: "Material Test Certificate", d: "Chemistry and mechanical properties issued per heat with every dispatch." },
+    { img: certInspectionImg, t: "Dimensional Inspection Report", d: "Measured against drawing tolerances and signed off before packing." },
+  ];
   return (
-    <section className="border-y border-border/50 bg-obsidian/60 py-14">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-copper">
+    <section id="certificates" className="relative overflow-hidden border-y border-border/50 bg-obsidian/60 py-24 md:py-32">
+      <div className="pointer-events-none absolute left-1/2 top-0 h-56 w-[60rem] -translate-x-1/2 rounded-full bg-copper/10 blur-[130px]" />
+      <div className="relative mx-auto max-w-7xl px-6">
+        <div className="mb-14 max-w-3xl">
+          <SectionLabel index="—" title="Certificates & Documentation" />
+          <h2 className="text-balance font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl">
+            Every casting ships with <em className="copper-text font-light italic">paperwork you can audit.</em>
+          </h2>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {certs.map((c) => (
+            <div key={c.t} className="group overflow-hidden rounded-2xl border border-border bg-card/60 transition-all hover:-translate-y-1 hover:border-copper/50">
+              <div className="relative aspect-[4/3] overflow-hidden bg-obsidian">
+                <img
+                  src={c.img}
+                  alt={`${c.t} — Brihaspati Alloys`}
+                  loading="lazy"
+                  width={1008}
+                  height={1008}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
+              </div>
+              <div className="p-6">
+                <div className="flex items-center gap-2 text-copper">
+                  <FileCheck className="h-4 w-4" strokeWidth={1.75} />
+                  <h3 className="font-display text-lg tracking-tight text-foreground">{c.t}</h3>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.d}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-16 mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-copper">
           <span>Castings supplied to international standards</span>
           <span className="h-px flex-1 bg-copper/20" />
         </div>
@@ -874,6 +918,7 @@ function Certifications() {
     </section>
   );
 }
+
 
 function Testimonials() {
   return (
