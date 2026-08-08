@@ -12,6 +12,13 @@ import aboutAsset from "@/assets/foundry-about.jpg.asset.json";
 import stainlessAsset from "@/assets/stainless-casting.png.asset.json";
 import co2Asset from "@/assets/co2-casting.jpg.asset.json";
 import gravityAsset from "@/assets/gravity-casting.png.asset.json";
+import valveImg from "@/assets/product-valve.jpg";
+import generalImg from "@/assets/product-general.jpg";
+import centrifugalImg from "@/assets/product-centrifugal.jpg";
+import textureImg from "@/assets/foundry-texture.jpg";
+import certMaterialImg from "@/assets/cert-material.jpg";
+import certQualityImg from "@/assets/cert-quality.jpg";
+import certInspectionImg from "@/assets/cert-inspection.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -20,6 +27,17 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="relative min-h-screen bg-background text-foreground">
+      {/* Ambient foundry backdrop */}
+      <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-[0.22]"
+          style={{ backgroundImage: `url(${textureImg})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/92 to-background" />
+        <div className="absolute -left-40 top-1/4 h-[38rem] w-[38rem] rounded-full bg-copper/10 blur-[140px]" />
+        <div className="absolute -right-40 top-2/3 h-[34rem] w-[34rem] rounded-full bg-molten/10 blur-[150px]" />
+      </div>
+
       <Announcement />
       <Nav />
       <Hero />
@@ -43,6 +61,7 @@ function Index() {
     </div>
   );
 }
+
 
 function Announcement() {
   return (
