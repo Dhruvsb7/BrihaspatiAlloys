@@ -57,6 +57,8 @@ function Index() {
       <Testimonials />
       <FAQ />
       <CTA />
+      <LocationMap />
+
       <Footer />
     </div>
   );
