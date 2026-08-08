@@ -1084,7 +1084,7 @@ function Footer() {
                 height={48}
                 className="h-8 w-auto rounded-sm object-contain"
               />
-              <span className="font-display text-base">Brihaspati Alloys</span>
+              <span className="gold-silver-text font-display text-base font-semibold">Brihaspati Alloys</span>
             </div>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
               Non-ferrous metal foundry in Kittur, Belagavi. Copper alloy, stainless steel and
